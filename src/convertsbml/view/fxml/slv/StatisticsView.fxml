@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="convertsbml.view.StatisticsView">
+  <columnConstraints>
+    <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0" />
+      <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label text="Ścieżka pliku" />
+      <Label text="Ilość równań" GridPane.rowIndex="2" />
+      <Label text="Ilość parametrów" GridPane.rowIndex="3" />
+      <Label text="Ilość reguł" GridPane.rowIndex="4" />
+      <Label text="Nazwa modelu" GridPane.rowIndex="1" />
+      <Label fx:id="modelPathLbl" text="Label" GridPane.columnIndex="1" />
+      <Label fx:id="modelNameLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label fx:id="equationsAmountLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label fx:id="parametersAmountLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label fx:id="rulesAmountLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Button fx:id="showEquationsBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showEquationsAction" text="Pokaż równania" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+      <Button fx:id="showParametersBtn" mnemonicParsing="false" onAction="#showParametersAction" text="Pokaż parametry" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Button fx:id="showRulesBtn" mnemonicParsing="false" onAction="#showRulesAction" text="Pokaż reguły" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <TextArea fx:id="statisticsArea" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.rowSpan="2147483647" GridPane.vgrow="ALWAYS" />
+   </children>
+</GridPane>

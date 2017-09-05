@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="330.0" maxWidth="500.0" minHeight="330.0" minWidth="500.0" prefHeight="330.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="convertsbml.view.dialog.LoadMatlabFileDialog">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.0" minWidth="10.0" prefWidth="120.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="100.0" prefWidth="243.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <TextField fx:id="complexStochasticModelPath" layoutX="173.0" layoutY="246.0" prefHeight="25.0" prefWidth="257.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="80.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Label layoutX="40.0" layoutY="208.0" text="Parametry" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="220.0" GridPane.rowIndex="4" />
+      <Button fx:id="chooseComplexStochasticParametersPathBtn" layoutX="435.0" layoutY="276.0" minWidth="70.0" mnemonicParsing="false" onAction="#chooseComplexStochasticParametersPathAction" prefHeight="25.0" prefWidth="60.0" text="Wybierz" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="15.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Label layoutX="40.0" layoutY="132.0" text="Parametry" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="130.0" GridPane.rowIndex="7" />
+      <Button fx:id="chooseSimpleParameterPathBtn" layoutX="435.0" layoutY="126.0" minWidth="70.0" mnemonicParsing="false" onAction="#chooseSimpleParameterPathAction" prefHeight="25.0" prefWidth="60.0" text="Wybierz" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="15.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Label layoutX="40.0" layoutY="103.0" text="Model" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="100.0" GridPane.rowIndex="3" />
+      <TextField fx:id="simpleModelPath" layoutX="93.0" layoutY="96.0" prefHeight="25.0" prefWidth="339.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="complexDeterministicModelPath" layoutX="176.0" layoutY="186.0" prefHeight="25.0" prefWidth="257.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="80.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Label layoutX="39.0" layoutY="233.0" text="Model stochastyczny" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="250.0" GridPane.rowIndex="8" />
+      <Separator layoutY="58.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+      <Label layoutX="39.0" layoutY="262.0" text="Parametry" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="280.0" GridPane.rowIndex="9" />
+      <Button fx:id="chooseSimpleModelPathBtn" layoutX="434.0" layoutY="96.0" minWidth="70.0" mnemonicParsing="false" onAction="#chooseSimpleModelPathAction" prefHeight="25.0" prefWidth="60.0" text="Wybierz" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="15.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="chooseComplexDeterministicParametersPathBtn" layoutX="435.0" layoutY="216.0" minWidth="70.0" mnemonicParsing="false" onAction="#chooseComplexDeterministicParametersPathAction" prefHeight="25.0" prefWidth="60.0" text="Wybierz" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="15.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin>
+      </Button>
+      <TextField fx:id="complexDeterministicParametersPath" layoutX="173.0" layoutY="216.0" prefHeight="25.0" prefWidth="257.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="80.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <Label layoutX="38.0" layoutY="185.0" text="Model deterministyczny" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="190.0" GridPane.rowIndex="6" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="19.0" prefWidth="494.0" text="Proszę wybrać rodzaj modelu oraz podać ścieżki do wymaganych plików." textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0" GridPane.columnSpan="3">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="simpleModelCheck" layoutX="114.0" layoutY="70.0" mnemonicParsing="false" onAction="#simpleModelCheckAction" text="Model prosty" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="60.0" GridPane.rowIndex="2">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <Button fx:id="chooseComplexStochasticModelPathBtn" layoutX="435.0" layoutY="246.0" minWidth="70.0" mnemonicParsing="false" onAction="#chooseComplexStochasticModelPathAction" prefHeight="25.0" prefWidth="60.0" text="Wybierz" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="15.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin>
+      </Button>
+      <TextField fx:id="simpleParametersPath" layoutX="93.0" layoutY="126.0" prefHeight="25.0" prefWidth="339.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="130.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <CheckBox fx:id="complexModelCheck" layoutX="21.0" layoutY="167.0" mnemonicParsing="false" onAction="#complexModelCheckAction" text="Model złożony" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="160.0" GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <Button fx:id="chooseComplexDeterministicModelPathBtn" layoutX="435.0" layoutY="186.0" minWidth="70.0" mnemonicParsing="false" onAction="#chooseComplexDeterministicModelPathAction" prefHeight="25.0" prefWidth="60.0" text="Wybierz" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="15.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin>
+      </Button>
+      <TextField fx:id="complexStochasticParametersPath" layoutX="173.0" layoutY="276.0" prefHeight="25.0" prefWidth="257.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="80.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+   </children>
+</GridPane>

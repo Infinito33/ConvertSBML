@@ -1,0 +1,2081 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="testModel">
+    <listOfCompartments>
+      <compartment id="ATM"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="IR" compartment="ATM"/>
+      <species id="TNF" compartment="ATM"/>
+      <species id="siR" compartment="ATM"/>
+      <species id="NAa20" compartment="ATM"/>
+      <species id="NAatm" compartment="ATM"/>
+      <species id="NAbax" compartment="ATM"/>
+      <species id="NAchk2" compartment="ATM"/>
+      <species id="NAikba" compartment="ATM"/>
+      <species id="NAmdm2" compartment="ATM"/>
+      <species id="NAp53" compartment="ATM"/>
+      <species id="NApten" compartment="ATM"/>
+      <species id="NAwip1" compartment="ATM"/>
+      <species id="AKTtot" compartment="ATM"/>
+      <species id="CREBtot" compartment="ATM"/>
+      <species id="KMRNtot" compartment="ATM"/>
+      <species id="KSRPtot" compartment="ATM"/>
+      <species id="PIPtot" compartment="ATM"/>
+      <species id="kv" compartment="ATM"/>
+      <species id="pa1" compartment="ATM"/>
+      <species id="pa2" compartment="ATM"/>
+      <species id="pa3" compartment="ATM"/>
+      <species id="pa4" compartment="ATM"/>
+      <species id="pa5" compartment="ATM"/>
+      <species id="pa6" compartment="ATM"/>
+      <species id="pa7" compartment="ATM"/>
+      <species id="pa8" compartment="ATM"/>
+      <species id="pa9" compartment="ATM"/>
+      <species id="pc1" compartment="ATM"/>
+      <species id="pc2" compartment="ATM"/>
+      <species id="pc3" compartment="ATM"/>
+      <species id="pc4" compartment="ATM"/>
+      <species id="pd1" compartment="ATM"/>
+      <species id="pd2" compartment="ATM"/>
+      <species id="pd3" compartment="ATM"/>
+      <species id="pd4" compartment="ATM"/>
+      <species id="pd5" compartment="ATM"/>
+      <species id="pd6" compartment="ATM"/>
+      <species id="pd7" compartment="ATM"/>
+      <species id="pd8" compartment="ATM"/>
+      <species id="pd9" compartment="ATM"/>
+      <species id="pd10" compartment="ATM"/>
+      <species id="pd11" compartment="ATM"/>
+      <species id="pi1" compartment="ATM"/>
+      <species id="pm1" compartment="ATM"/>
+      <species id="pm2" compartment="ATM"/>
+      <species id="pm3" compartment="ATM"/>
+      <species id="pq1" compartment="ATM"/>
+      <species id="pq2" compartment="ATM"/>
+      <species id="pq3" compartment="ATM"/>
+      <species id="pq4" compartment="ATM"/>
+      <species id="ps1" compartment="ATM"/>
+      <species id="ps2" compartment="ATM"/>
+      <species id="ps3" compartment="ATM"/>
+      <species id="pt1" compartment="ATM"/>
+      <species id="pt2" compartment="ATM"/>
+      <species id="pt3" compartment="ATM"/>
+      <species id="M" compartment="ATM"/>
+      <species id="na1" compartment="ATM"/>
+      <species id="na2" compartment="ATM"/>
+      <species id="na3" compartment="ATM"/>
+      <species id="na4" compartment="ATM"/>
+      <species id="na5" compartment="ATM"/>
+      <species id="na6" compartment="ATM"/>
+      <species id="na7" compartment="ATM"/>
+      <species id="nc1" compartment="ATM"/>
+      <species id="nc2" compartment="ATM"/>
+      <species id="nc3" compartment="ATM"/>
+      <species id="nd1" compartment="ATM"/>
+      <species id="nd2" compartment="ATM"/>
+      <species id="nd3" compartment="ATM"/>
+      <species id="nd4" compartment="ATM"/>
+      <species id="ne1" compartment="ATM"/>
+      <species id="ne2" compartment="ATM"/>
+      <species id="ni1" compartment="ATM"/>
+      <species id="ni2" compartment="ATM"/>
+      <species id="nk1" compartment="ATM"/>
+      <species id="nk2" compartment="ATM"/>
+      <species id="nm2" compartment="ATM"/>
+      <species id="nm3" compartment="ATM"/>
+      <species id="nm4" compartment="ATM"/>
+      <species id="nq1" compartment="ATM"/>
+      <species id="nq2" compartment="ATM"/>
+      <species id="ns1" compartment="ATM"/>
+      <species id="nt1" compartment="ATM"/>
+      <species id="ma1" compartment="ATM"/>
+      <species id="ma2" compartment="ATM"/>
+      <species id="ma3" compartment="ATM"/>
+      <species id="ma4" compartment="ATM"/>
+      <species id="ma5" compartment="ATM"/>
+      <species id="ma6" compartment="ATM"/>
+      <species id="ma7" compartment="ATM"/>
+      <species id="mc1" compartment="ATM"/>
+      <species id="mc2" compartment="ATM"/>
+      <species id="mc3" compartment="ATM"/>
+      <species id="mc4" compartment="ATM"/>
+      <species id="mc5" compartment="ATM"/>
+      <species id="md1" compartment="ATM"/>
+      <species id="md2" compartment="ATM"/>
+      <species id="md3" compartment="ATM"/>
+      <species id="md4" compartment="ATM"/>
+      <species id="mm1" compartment="ATM"/>
+      <species id="mm2" compartment="ATM"/>
+      <species id="mm3" compartment="ATM"/>
+      <species id="mq1" compartment="ATM"/>
+      <species id="mq2" compartment="ATM"/>
+      <species id="mq3" compartment="ATM"/>
+      <species id="ms1" compartment="ATM"/>
+      <species id="ms2" compartment="ATM"/>
+      <species id="mt1" compartment="ATM"/>
+      <species id="mt2" compartment="ATM"/>
+      <species id="wa1" compartment="ATM"/>
+      <species id="wa2" compartment="ATM"/>
+      <species id="wc1" compartment="ATM"/>
+      <species id="wd1" compartment="ATM"/>
+      <species id="wd2" compartment="ATM"/>
+      <species id="wd3" compartment="ATM"/>
+      <species id="wd4" compartment="ATM"/>
+      <species id="wd5" compartment="ATM"/>
+      <species id="wd6" compartment="ATM"/>
+      <species id="we1" compartment="ATM"/>
+      <species id="wi1" compartment="ATM"/>
+      <species id="wq1" compartment="ATM"/>
+      <species id="ws1" compartment="ATM"/>
+      <species id="ws2" compartment="ATM"/>
+      <species id="wt1" compartment="ATM"/>
+      <species id="bd1" compartment="ATM"/>
+      <species id="bd2" compartment="ATM"/>
+      <species id="bs1" compartment="ATM"/>
+      <species id="bt1" compartment="ATM"/>
+      <species id="bd3" compartment="ATM"/>
+      <species id="bd4" compartment="ATM"/>
+      <species id="bs2" compartment="ATM"/>
+      <species id="bt2" compartment="ATM"/>
+      <species id="NAp21" compartment="ATM"/>
+      <species id="nt1a" compartment="ATM"/>
+      <species id="pq5" compartment="ATM"/>
+      <species id="nm1" compartment="ATM"/>
+      <species id="Gp53" compartment="ATM"/>
+      <species id="P53t" compartment="ATM"/>
+      <species id="P53" compartment="ATM"/>
+      <species id="P53p" compartment="ATM"/>
+      <species id="Gmdm2" compartment="ATM"/>
+      <species id="MDM2t" compartment="ATM"/>
+      <species id="MDM2" compartment="ATM"/>
+      <species id="MDM2p" compartment="ATM"/>
+      <species id="MDM2n" compartment="ATM"/>
+      <species id="MDM2ppn" compartment="ATM"/>
+      <species id="Gpten" compartment="ATM"/>
+      <species id="PTENt" compartment="ATM"/>
+      <species id="PTEN" compartment="ATM"/>
+      <species id="PIP3" compartment="ATM"/>
+      <species id="AKTa" compartment="ATM"/>
+      <species id="NFKB" compartment="ATM"/>
+      <species id="NFKBn" compartment="ATM"/>
+      <species id="IKBANFKB" compartment="ATM"/>
+      <species id="IKBApNFKB" compartment="ATM"/>
+      <species id="IKBAnNFKBn" compartment="ATM"/>
+      <species id="Gikba" compartment="ATM"/>
+      <species id="IKBAt" compartment="ATM"/>
+      <species id="IKBA" compartment="ATM"/>
+      <species id="IKBAp" compartment="ATM"/>
+      <species id="IKBAn" compartment="ATM"/>
+      <species id="Ga20" compartment="ATM"/>
+      <species id="A20t" compartment="ATM"/>
+      <species id="A20" compartment="ATM"/>
+      <species id="IKKK" compartment="ATM"/>
+      <species id="IKKKa" compartment="ATM"/>
+      <species id="IKK" compartment="ATM"/>
+      <species id="IKKa" compartment="ATM"/>
+      <species id="IKKi" compartment="ATM"/>
+      <species id="IKKii" compartment="ATM"/>
+      <species id="Ra" compartment="ATM"/>
+      <species id="DSB" compartment="ATM"/>
+      <species id="Gatm" compartment="ATM"/>
+      <species id="ATMt" compartment="ATM"/>
+      <species id="ATMn" compartment="ATM"/>
+      <species id="ATMpn" compartment="ATM"/>
+      <species id="ATMan" compartment="ATM"/>
+      <species id="Gchk2" compartment="ATM"/>
+      <species id="CHK2t" compartment="ATM"/>
+      <species id="CHK2n" compartment="ATM"/>
+      <species id="CHK2pn" compartment="ATM"/>
+      <species id="KMRNpn" compartment="ATM"/>
+      <species id="CREBpn" compartment="ATM"/>
+      <species id="Gwip1" compartment="ATM"/>
+      <species id="WIP1t" compartment="ATM"/>
+      <species id="WIP1n" compartment="ATM"/>
+      <species id="KSRPa" compartment="ATM"/>
+      <species id="KSRPn" compartment="ATM"/>
+      <species id="PreMiR16" compartment="ATM"/>
+      <species id="MiR16" compartment="ATM"/>
+      <species id="Gbax" compartment="ATM"/>
+      <species id="BAXt" compartment="ATM"/>
+      <species id="BAX" compartment="ATM"/>
+      <species id="AP" compartment="ATM"/>
+      <species id="Gp21" compartment="ATM"/>
+      <species id="P21" compartment="ATM"/>
+      <species id="P21t" compartment="ATM"/>
+      <species id="CCB" compartment="ATM"/>
+      <species id="CCBtmp" compartment="ATM"/>
+      <species id="CCB2" compartment="ATM"/>
+      <species id="CCBtmp2" compartment="ATM"/>
+    </listOfSpecies>
+    <listOfRules>
+      <rateRule metaid="metaid_0000001" variable="Gp53">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pq1 </ci>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> nq1 </ci>
+                    <ci> NFKBn </ci>
+                    <ci> nm1 </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> nm1 </ci>
+                    <ci> WIP1n </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> NAp53 </ci>
+                <ci> Gp53 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pq5 </ci>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 0 </cn>
+                  <ci> nq2 </ci>
+                  <ci> IKBAn </ci>
+                </apply>
+              </apply>
+              <ci> Gp53 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000002" variable="P53t">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> ps1 </ci>
+              <ci> Gp53 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pd1 </ci>
+              <ci> P53t </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000003" variable="P53">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> pt1 </ci>
+                  <ci> P53t </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> pc1 </ci>
+                  <ci> P53p </ci>
+                  <ci> WIP1n </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <ci> pa1 </ci>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> pa2 </ci>
+                      <ci> ATMan </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <ci> ATMan </ci>
+                      <ci> pm1 </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> pa3 </ci>
+                      <ci> CHK2pn </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <ci> CHK2pn </ci>
+                      <ci> pm2 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> P53 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pd2 </ci>
+                <apply>
+                  <times/>
+                  <ci> pd3 </ci>
+                  <apply>
+                    <power/>
+                    <ci> MDM2n </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> P53 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000004" variable="P53p">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <ci> pa1 </ci>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> pa2 </ci>
+                      <ci> ATMan </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <ci> ATMan </ci>
+                      <ci> pm1 </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> pa3 </ci>
+                      <ci> CHK2pn </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <ci> CHK2pn </ci>
+                      <ci> pm2 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> P53 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> pc1 </ci>
+                <ci> P53p </ci>
+                <ci> WIP1n </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pd4 </ci>
+                <apply>
+                  <times/>
+                  <ci> pd5 </ci>
+                  <apply>
+                    <power/>
+                    <ci> MDM2n </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> P53p </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000005" variable="Gmdm2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pq2 </ci>
+                <apply>
+                  <times/>
+                  <ci> pq3 </ci>
+                  <apply>
+                    <power/>
+                    <ci> P53p </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> NAmdm2 </ci>
+                <ci> Gmdm2 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pq4 </ci>
+              <ci> Gmdm2 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000006" variable="MDM2t">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> ps2 </ci>
+              <ci> Gmdm2 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pd6 </ci>
+              <ci> MDM2t </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000007" variable="MDM2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> pt2 </ci>
+                  <ci> MDM2t </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> pc2 </ci>
+                  <ci> MDM2p </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> pa4 </ci>
+                <ci> MDM2 </ci>
+                <ci> AKTa </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pd7 </ci>
+                <apply>
+                  <times/>
+                  <ci> pd9 </ci>
+                  <apply>
+                    <divide/>
+                    <ci> CHK2pn </ci>
+                    <apply>
+                      <plus/>
+                      <ci> CHK2pn </ci>
+                      <ci> pm2 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> MDM2 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000008" variable="MDM2p">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> pa4 </ci>
+                  <ci> MDM2 </ci>
+                  <ci> AKTa </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> pc2 </ci>
+                  <ci> MDM2p </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> pi1 </ci>
+                <ci> MDM2p </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pd8 </ci>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> pd9 </ci>
+                    <ci> CHK2pn </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> CHK2pn </ci>
+                    <ci> pm2 </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> MDM2p </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000009" variable="MDM2n">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> pi1 </ci>
+                  <ci> MDM2p </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> pa5 </ci>
+                  <ci> WIP1n </ci>
+                  <ci> MDM2ppn </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <ci> pd8 </ci>
+                  <apply>
+                    <times/>
+                    <ci> pd9 </ci>
+                    <ci> kv </ci>
+                    <apply>
+                      <divide/>
+                      <ci> CHK2pn </ci>
+                      <apply>
+                        <plus/>
+                        <ci> CHK2pn </ci>
+                        <ci> pm2 </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> MDM2n </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pa6 </ci>
+              <ci> MDM2n </ci>
+              <ci> ATMan </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000010" variable="MDM2ppn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> pa6 </ci>
+                <ci> MDM2n </ci>
+                <ci> ATMan </ci>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <ci> pd8 </ci>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> pd9 </ci>
+                      <ci> kv </ci>
+                      <ci> CHK2pn </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <ci> CHK2pn </ci>
+                      <ci> pm2 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> MDM2ppn </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pa5 </ci>
+              <ci> WIP1n </ci>
+              <ci> MDM2ppn </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000011" variable="Gpten">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pq2 </ci>
+                <apply>
+                  <times/>
+                  <ci> pq3 </ci>
+                  <apply>
+                    <power/>
+                    <ci> P53p </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> NApten </ci>
+                <ci> Gpten </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pq4 </ci>
+              <ci> Gpten </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000012" variable="PTENt">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> ps3 </ci>
+              <ci> Gpten </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pd10 </ci>
+              <ci> PTENt </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000013" variable="PTEN">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> pt3 </ci>
+              <ci> PTENt </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pd11 </ci>
+              <ci> PTEN </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000014" variable="PIP3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> pa7 </ci>
+              <apply>
+                <minus/>
+                <ci> PIPtot </ci>
+                <ci> PIP3 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pc3 </ci>
+              <ci> PTEN </ci>
+              <ci> PIP3 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000015" variable="AKTa">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> pa8 </ci>
+              <ci> PIP3 </ci>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <times/>
+                  <ci> pa9 </ci>
+                  <ci> ATMan </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> AKTtot </ci>
+                <ci> AKTa </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pc4 </ci>
+              <ci> AKTa </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000016" variable="NFKB">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> nk1 </ci>
+                  <ci> IKBANFKB </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> nd1 </ci>
+                  <ci> IKBApNFKB </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> nk2 </ci>
+                <ci> NFKB </ci>
+                <ci> IKBA </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> ni1 </ci>
+              <ci> NFKB </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000017" variable="NFKBn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> ni1 </ci>
+              <ci> NFKB </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nk2 </ci>
+              <ci> kv </ci>
+              <ci> NFKBn </ci>
+              <ci> IKBAn </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000018" variable="IKBANFKB">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> nk2 </ci>
+                  <ci> NFKB </ci>
+                  <ci> IKBA </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> ne2 </ci>
+                  <ci> IKBAnNFKBn </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> nk1 </ci>
+                <ci> IKBANFKB </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> na1 </ci>
+              <ci> IKKa </ci>
+              <ci> IKBANFKB </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000019" variable="IKBApNFKB">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> na1 </ci>
+              <ci> IKKa </ci>
+              <ci> IKBANFKB </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nd1 </ci>
+              <ci> IKBApNFKB </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000020" variable="IKBAnNFKBn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> nk2 </ci>
+              <ci> kv </ci>
+              <ci> NFKBn </ci>
+              <ci> IKBAn </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> ne2 </ci>
+              <ci> IKBAnNFKBn </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000021" variable="Gikba">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> nq1 </ci>
+                <ci> NFKBn </ci>
+                <apply>
+                  <minus/>
+                  <ci> NAikba </ci>
+                  <ci> Gikba </ci>
+                </apply>
+                <ci> nm1 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> nm1 </ci>
+                <ci> WIP1n </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nq2 </ci>
+              <ci> IKBAn </ci>
+              <ci> Gikba </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000022" variable="IKBAt">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> ns1 </ci>
+                <ci> Gikba </ci>
+                <ci> pm3 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> pm3 </ci>
+                <ci> P53p </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nd2 </ci>
+              <ci> IKBAt </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000023" variable="IKBA">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> nt1 </ci>
+                      <ci> IKBAt </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> ne1 </ci>
+                      <ci> IKBAn </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> na2 </ci>
+                    <ci> IKKa </ci>
+                    <ci> IKBA </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> nk2 </ci>
+                  <ci> NFKB </ci>
+                  <ci> IKBA </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> nd3 </ci>
+                <ci> IKBA </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> ni2 </ci>
+              <ci> IKBA </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000024" variable="IKBAp">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> na2 </ci>
+              <ci> IKKa </ci>
+              <ci> IKBA </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nd1 </ci>
+              <ci> IKBAp </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000025" variable="IKBAn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> ni2 </ci>
+                <ci> IKBA </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> nk2 </ci>
+                <ci> kv </ci>
+                <ci> NFKBn </ci>
+                <ci> IKBAn </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> ne1 </ci>
+              <ci> IKBAn </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000026" variable="Ga20">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> nq1 </ci>
+                <ci> NFKBn </ci>
+                <apply>
+                  <minus/>
+                  <ci> NAa20 </ci>
+                  <ci> Ga20 </ci>
+                </apply>
+                <ci> nm1 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> nm1 </ci>
+                <ci> WIP1n </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nq2 </ci>
+              <ci> IKBAn </ci>
+              <ci> Ga20 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000027" variable="A20t">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> ns1 </ci>
+                <ci> Ga20 </ci>
+                <ci> pm3 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> pm3 </ci>
+                <ci> P53p </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nd2 </ci>
+              <ci> A20t </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000028" variable="A20">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> nt1a </ci>
+              <ci> A20t </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nd4 </ci>
+              <ci> A20 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000029" variable="IKKK">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> nc1 </ci>
+              <ci> IKKKa </ci>
+            </apply>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> na3 </ci>
+                <ci> Ra </ci>
+                <ci> IKKK </ci>
+                <ci> nm2 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> nm2 </ci>
+                <apply>
+                  <times/>
+                  <ci> nm3 </ci>
+                  <ci> A20 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000030" variable="IKKKa">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> na3 </ci>
+                <ci> Ra </ci>
+                <ci> IKKK </ci>
+                <ci> nm2 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> nm2 </ci>
+                <apply>
+                  <times/>
+                  <ci> nm3 </ci>
+                  <ci> A20 </ci>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nc1 </ci>
+              <ci> IKKKa </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000031" variable="IKK">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> na4 </ci>
+              <ci> IKKii </ci>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> na5 </ci>
+                  <ci> IKKKa </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> na6 </ci>
+                  <ci> ATMan </ci>
+                </apply>
+              </apply>
+              <ci> IKK </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000032" variable="IKKa">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> na5 </ci>
+                  <ci> IKKKa </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> na6 </ci>
+                  <ci> ATMan </ci>
+                </apply>
+              </apply>
+              <ci> IKK </ci>
+            </apply>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> nc2 </ci>
+                <ci> IKKa </ci>
+                <apply>
+                  <plus/>
+                  <ci> nm4 </ci>
+                  <ci> A20 </ci>
+                </apply>
+              </apply>
+              <ci> nm4 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000033" variable="IKKi">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> nc2 </ci>
+                <ci> IKKa </ci>
+                <apply>
+                  <plus/>
+                  <ci> nm4 </ci>
+                  <ci> A20 </ci>
+                </apply>
+              </apply>
+              <ci> nm4 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> na4 </ci>
+              <ci> IKKi </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000034" variable="IKKii">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> na4 </ci>
+              <ci> IKKi </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> na4 </ci>
+              <ci> IKKii </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000035" variable="Ra">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> na7 </ci>
+              <apply>
+                <minus/>
+                <ci> M </ci>
+                <ci> Ra </ci>
+              </apply>
+              <ci> TNF </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nc3 </ci>
+              <ci> Ra </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000036" variable="DSB">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> ma1 </ci>
+                <ci> IR </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> ma2 </ci>
+                <ci> AP </ci>
+              </apply>
+            </apply>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> mc1 </ci>
+                    <ci> DSB </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> DSB </ci>
+                    <ci> mm1 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> pq2 </ci>
+                  <apply>
+                    <times/>
+                    <ci> pq3 </ci>
+                    <apply>
+                      <power/>
+                      <ci> P53p </ci>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> pq4 </ci>
+                <ci> pq2 </ci>
+                <apply>
+                  <times/>
+                  <ci> pq3 </ci>
+                  <apply>
+                    <power/>
+                    <ci> P53p </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000037" variable="Gatm">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> mq1 </ci>
+                <apply>
+                  <times/>
+                  <ci> pq3 </ci>
+                  <apply>
+                    <power/>
+                    <ci> P53p </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> mq2 </ci>
+                  <ci> CREBpn </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> NAatm </ci>
+                <ci> Gatm </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> mq3 </ci>
+              <ci> Gatm </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000038" variable="ATMt">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> ms1 </ci>
+              <ci> Gatm </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> md1 </ci>
+              <ci> ATMt </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000039" variable="ATMn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> mt1 </ci>
+                  <ci> ATMt </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> mc2 </ci>
+                  <ci> WIP1n </ci>
+                  <ci> ATMpn </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> ATMn </ci>
+                  <ci> ma3 </ci>
+                  <ci> DSB </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> DSB </ci>
+                  <ci> mm2 </ci>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> md2 </ci>
+              <ci> ATMn </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000040" variable="ATMpn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> ATMn </ci>
+                      <ci> ma3 </ci>
+                      <ci> DSB </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <ci> DSB </ci>
+                      <ci> mm2 </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> mc2 </ci>
+                    <ci> WIP1n </ci>
+                    <ci> ATMan </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> ma4 </ci>
+                  <ci> ATMpn </ci>
+                  <ci> KMRNpn </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mc2 </ci>
+                <ci> WIP1n </ci>
+                <ci> ATMpn </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> md2 </ci>
+              <ci> ATMpn </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000041" variable="ATMan">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> ma4 </ci>
+                <ci> ATMpn </ci>
+                <ci> KMRNpn </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mc2 </ci>
+                <ci> WIP1n </ci>
+                <ci> ATMan </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> md2 </ci>
+              <ci> ATMan </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000042" variable="Gchk2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> mq1 </ci>
+              <apply>
+                <minus/>
+                <ci> NAchk2 </ci>
+                <ci> Gchk2 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> mq3 </ci>
+              <ci> Gchk2 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000043" variable="CHK2t">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> ms2 </ci>
+                <ci> Gchk2 </ci>
+                <ci> pm3 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> pm3 </ci>
+                <ci> P53p </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> md3 </ci>
+              <ci> CHK2t </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000044" variable="CHK2n">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> mt2 </ci>
+                  <ci> CHK2t </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> mc3 </ci>
+                  <ci> WIP1n </ci>
+                  <ci> CHK2pn </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> ma5 </ci>
+                <ci> ATMan </ci>
+                <ci> CHK2n </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> md4 </ci>
+              <ci> CHK2n </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000045" variable="CHK2pn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> ma5 </ci>
+                <ci> ATMan </ci>
+                <ci> CHK2n </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mc3 </ci>
+                <ci> WIP1n </ci>
+                <ci> CHK2pn </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> md4 </ci>
+              <ci> CHK2pn </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000046" variable="KMRNpn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> ma6 </ci>
+                  <ci> ATMpn </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> ma7 </ci>
+                    <ci> DSB </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> DSB </ci>
+                    <ci> mm3 </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> KMRNtot </ci>
+                <ci> KMRNpn </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> mc4 </ci>
+              <ci> KMRNpn </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000047" variable="CREBpn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> ma5 </ci>
+              <ci> ATMan </ci>
+              <apply>
+                <minus/>
+                <ci> CREBtot </ci>
+                <ci> CREBpn </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> mc5 </ci>
+              <ci> CREBpn </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000048" variable="Gwip1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pq2 </ci>
+                <apply>
+                  <times/>
+                  <ci> pq3 </ci>
+                  <apply>
+                    <power/>
+                    <ci> P53p </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> mq2 </ci>
+                  <ci> CREBpn </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> nq1 </ci>
+                    <ci> NFKBn </ci>
+                    <ci> nm1 </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> nm1 </ci>
+                    <ci> WIP1n </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> NAwip1 </ci>
+                <ci> Gwip1 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> wq1 </ci>
+              <ci> Gwip1 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000049" variable="WIP1t">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> ws1 </ci>
+              <ci> Gwip1 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> wd1 </ci>
+                <apply>
+                  <times/>
+                  <ci> siR </ci>
+                  <ci> wd2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> wd3 </ci>
+                  <ci> MiR16 </ci>
+                </apply>
+              </apply>
+              <ci> WIP1t </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000050" variable="WIP1n">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> wt1 </ci>
+              <ci> WIP1t </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> wd4 </ci>
+              <ci> WIP1n </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000051" variable="KSRPa">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> wa1 </ci>
+                  <ci> ATMan </ci>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <minus/>
+                      <ci> KSRPtot </ci>
+                      <ci> KSRPa </ci>
+                    </apply>
+                    <ci> KSRPn </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> we1 </ci>
+                  <ci> KSRPn </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> wc1 </ci>
+                <ci> KSRPa </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> wi1 </ci>
+              <ci> KSRPa </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000052" variable="KSRPn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> wi1 </ci>
+              <ci> KSRPa </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> we1 </ci>
+              <ci> KSRPn </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000053" variable="PreMiR16">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> ws2 </ci>
+              <ci> KSRPn </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> wd5 </ci>
+              <ci> PreMiR16 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000054" variable="MiR16">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> wa2 </ci>
+              <ci> PreMiR16 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> wd6 </ci>
+              <ci> MiR16 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000055" variable="Gbax">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pq2 </ci>
+                <apply>
+                  <times/>
+                  <ci> pq3 </ci>
+                  <apply>
+                    <power/>
+                    <ci> P53p </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> NAbax </ci>
+                <ci> Gbax </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pq4 </ci>
+              <ci> Gbax </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000056" variable="BAXt">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> bs1 </ci>
+              <ci> Gbax </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> bd1 </ci>
+              <ci> BAXt </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000057" variable="BAX">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> bt1 </ci>
+              <ci> BAXt </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> bd2 </ci>
+              <ci> BAX </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000058" variable="AP"/>
+      <rateRule metaid="metaid_0000059" variable="Gp21">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> pq2 </ci>
+                <apply>
+                  <times/>
+                  <ci> pq3 </ci>
+                  <apply>
+                    <power/>
+                    <ci> P53p </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> NAp21 </ci>
+                <ci> Gp21 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> pq4 </ci>
+              <ci> Gp21 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000060" variable="P21t">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> bs2 </ci>
+              <ci> Gp21 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> bd3 </ci>
+              <ci> P21t </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000061" variable="P21">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> bt2 </ci>
+              <ci> P21t </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> bd4 </ci>
+              <ci> P21 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule metaid="metaid_0000062" variable="CCBtmp"/>
+      <rateRule metaid="metaid_0000063" variable="CCB"/>
+      <rateRule metaid="metaid_0000064" variable="CCBtmp2"/>
+      <rateRule metaid="metaid_0000065" variable="CCB2"/>
+    </listOfRules>
+  </model>
+</sbml>

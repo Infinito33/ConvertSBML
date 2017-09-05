@@ -1,0 +1,108 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-08-01, 13:30:44
+    Author     : tomasz.huchro
+*/
+
+/*
+Customizing scroll-pane -> http://blog.ngopal.com.np/2012/07/11/customize-scrollbar-via-css/
+*/
+
+.custom-scroll-pane {
+    -fx-background-color: #2980B9;
+}
+
+.custom-scroll-pane .viewport {
+    -fx-background-color: #2980B9;
+}
+
+.custom-scroll-pane .track {
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius:2em;
+    -fx-background-color: #2980B9;
+}
+
+.custom-scroll-pane .increment-button, 
+.custom-scroll-pane .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 10 0 0;
+}
+
+.custom-scroll-pane .increment-arrow,
+.custom-scroll-pane .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+.custom-scroll-pane .thumb {
+    -fx-background-color: #2C3E50;
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+/*
+Custom menu button
+*/
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0 0 0 25;
+    -fx-font-family: "Book Antiqua";
+    -fx-font-size: 16px;
+    -fx-text-fill: #ecf0f1;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.menu-button:hover {
+    -fx-background-color: #2e90d1;
+}
+
+/*
+Custom sub-menu button
+*/
+
+.sub-menu-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0 0 0 25;
+    -fx-font-family: "Book Antiqua";
+    -fx-font-size: 14px;
+    -fx-text-fill: #ecf0f1;
+    -fx-alignment: CENTER_LEFT; 
+}
+
+.sub-menu-button:hover {
+    -fx-background-color: #2e90d1;
+}
+
+/*
+Custom menu titled-pane
+*/
+.menu-titled-pane {
+    -fx-font-family: "Book Antiqua";
+    -fx-font-size: 16px;
+    -fx-text-fill: #ecf0f1;
+    -fx-font-weight: bold;
+}
+
+.menu-titled-pane .title {
+    -fx-padding: 7 0 7 25;
+    -fx-background-color: transparent;
+}
+
+.menu-titled-pane .title:hover {
+    -fx-background-color: #2e90d1;
+}
+
+.menu-titled-pane .content {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: -10 0 0 0;
+}
