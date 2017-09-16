@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="ATMctr">
+  <settings>
+    <ProjDesc/>
+    <SaveDir>/</SaveDir>
+  </settings>
+  <simfilehistory Nhist="2">
+    <h1 Name="10Gy" Model="ATM" FileDir="D:\Solvary\ATM\ATMctr_ATM_s1.slr" Repeats="1000" SimDate="2016-10-24 11:30" Idx="1"/>
+    <h2 Name="ATM" Model="ATM" FileDir="D:\solvary32bit\ATM\ATMoscylacjeWip\ATMctr_ATM_s2.slr" Repeats="100" SimDate="2016-10-24 11:30" Idx="1"/>
+  </simfilehistory>
+  <models Nmodels="1">
+    <model1 name="ATM">
+      <ModelDesc/>
+      <DetSolver>RungeKutta4</DetSolver>
+      <StochSolver>Direct Gillespie</StochSolver>
+      <SimTime units="0">951000</SimTime>
+      <Simdt units="0">0.1</Simdt>
+      <Savedt units="0">10</Savedt>
+      <StochIter>100</StochIter>
+      <Eqs>Gp53'={(pq1+nq1*NFKBn*nm1/(nm1+WIP1n))*(NAp53-Gp53)}-{(pq5+0*nq2*IKBAn)*Gp53}
+P53t'={ps1*Gp53}-{pd1*P53t}
+P53'={pt1*P53t}+{pc1*P53p*WIP1n}-{(pa1+pa2*ATMan/(ATMan+pm1)+pa3*CHK2pn/(CHK2pn+pm2))*P53}-{(pd2+pd3*MDM2n^2)*P53}
+P53p'={(pa1+pa2*ATMan/(ATMan+pm1)+pa3*CHK2pn/(CHK2pn+pm2))*P53}-{pc1*P53p*WIP1n}-{(pd4+pd5*MDM2n^2)*P53p}
+Gmdm2'={(pq2+pq3*P53p^2)*(NAmdm2-Gmdm2)}-{pq4*Gmdm2}
+MDM2t'={ps2*Gmdm2}-{pd6*MDM2t}
+MDM2'={pt2*MDM2t}+{pc2*MDM2p}-{pa4*MDM2*AKTa}-{(pd7+pd9*(CHK2pn/(CHK2pn+pm2)))*MDM2}
+MDM2p'={pa4*MDM2*AKTa}-{pc2*MDM2p}-{pi1*MDM2p}-{(pd8+pd9*CHK2pn/(CHK2pn+pm2))*MDM2p}
+MDM2n'={pi1*MDM2p}+{pa5*WIP1n*MDM2ppn}-{(pd8+pd9*kv*(CHK2pn/(CHK2pn+pm2)))*MDM2n}-{pa6*MDM2n*ATMan}
+MDM2ppn'={pa6*MDM2n*ATMan}-{(pd8+pd9*kv*CHK2pn/(CHK2pn+pm2))*MDM2ppn}-{pa5*WIP1n*MDM2ppn}
+Gpten'={(pq2+pq3*P53p^2)*(NApten-Gpten)}-{pq4*Gpten}
+PTENt'={ps3*Gpten}-{pd10*PTENt}
+PTEN'={pt3*PTENt}-{pd11*PTEN}
+PIP3'={pa7*(PIPtot-PIP3)}-{pc3*PTEN*PIP3}
+AKTa'={pa8*PIP3*(1+pa9*ATMan)*(AKTtot-AKTa)}-{pc4*AKTa}
+NFKB'={nk1*IKBANFKB}+{nd1*IKBApNFKB}-{nk2*NFKB*IKBA}-{ni1*NFKB}
+NFKBn'={ni1*NFKB}-{nk2*kv*NFKBn*IKBAn}
+IKBANFKB'={nk2*NFKB*IKBA}+{ne2*IKBAnNFKBn}-{nk1*IKBANFKB}-{na1*IKKa*IKBANFKB}
+IKBApNFKB'={na1*IKKa*IKBANFKB}-{nd1*IKBApNFKB}
+IKBAnNFKBn'={nk2*kv*NFKBn*IKBAn}-{ne2*IKBAnNFKBn}
+Gikba'={nq1*NFKBn*(NAikba-Gikba)*nm1/(nm1+WIP1n)}-{nq2*IKBAn*Gikba}
+IKBAt'={ns1*Gikba*pm3/(pm3+P53p)}-{nd2*IKBAt}
+IKBA'={nt1*IKBAt}+{ne1*IKBAn}-{na2*IKKa*IKBA}-{nk2*NFKB*IKBA}-{nd3*IKBA}-{ni2*IKBA}
+IKBAp'={na2*IKKa*IKBA}-{nd1*IKBAp}
+IKBAn'={ni2*IKBA}-{nk2*kv*NFKBn*IKBAn}-{ne1*IKBAn}
+Ga20'={nq1*NFKBn*(NAa20-Ga20)*nm1/(nm1+WIP1n)}-{nq2*IKBAn*Ga20}
+A20t'={ns1*Ga20*pm3/(pm3+P53p)}-{nd2*A20t}
+A20'={nt1a*A20t}-{nd4*A20}
+IKKK'={nc1*IKKKa}-{na3*Ra*IKKK*nm2/(nm2+nm3*A20)}
+IKKKa'={na3*Ra*IKKK*nm2/(nm2+nm3*A20)}-{nc1*IKKKa}
+IKK'={na4*IKKii}-{(na5*IKKKa+na6*ATMan)*IKK}
+IKKa'={(na5*IKKKa+na6*ATMan)*IKK}-{nc2*IKKa*(nm4+A20)/nm4}
+IKKi'={nc2*IKKa*(nm4+A20)/nm4}-{na4*IKKi}
+IKKii'={na4*IKKi}-{na4*IKKii}
+Ra'={na7*(M-Ra)*TNF}-{nc3*Ra}
+DSB'={ma1*IR+ma2*AP}-{(mc1*DSB/(DSB+mm1))*(pq2+pq3*P53p^2)/(pq4+pq2+pq3*P53p^2)}
+Gatm'={(mq1+pq3*P53p^2+mq2*CREBpn)*(NAatm-Gatm)}-{mq3*Gatm}
+ATMt'={ms1*Gatm}-{md1*ATMt}
+ATMn'={mt1*ATMt}+{mc2*WIP1n*ATMpn}-{ATMn*ma3*DSB/(DSB+mm2)}-{md2*ATMn}
+ATMpn'={ATMn*ma3*DSB/(DSB+mm2)}+{mc2*WIP1n*ATMan}-{ma4*ATMpn*KMRNpn}-{mc2*WIP1n*ATMpn}-{md2*ATMpn}
+ATMan'={ma4*ATMpn*KMRNpn}-{mc2*WIP1n*ATMan}-{md2*ATMan}
+Gchk2'={mq1*(NAchk2-Gchk2)}-{mq3*Gchk2}
+CHK2t'={ms2*Gchk2*pm3/(pm3+P53p)}-{md3*CHK2t}
+CHK2n'={mt2*CHK2t}+{mc3*WIP1n*CHK2pn}-{ma5*ATMan*CHK2n}-{md4*CHK2n}
+CHK2pn'={ma5*ATMan*CHK2n}-{mc3*WIP1n*CHK2pn}-{md4*CHK2pn}
+KMRNpn'={(ma6*ATMpn+ma7*DSB/(DSB+mm3))*(KMRNtot-KMRNpn)}-{mc4*KMRNpn}
+CREBpn'={(ma5*ATMan)*(CREBtot-CREBpn)}-{mc5*CREBpn}
+Gwip1'={(pq2+pq3*P53p^2+mq2*CREBpn+nq1*NFKBn*nm1/(nm1+WIP1n))*(NAwip1-Gwip1)}-{wq1*Gwip1}
+WIP1t'={ws1*Gwip1}-{(wd1+siR*wd2+wd3*MiR16)*WIP1t}
+WIP1n'={wt1*WIP1t}-{wd4*WIP1n}
+KSRPa'={wa1*ATMan*(KSRPtot-KSRPa-KSRPn)}+{we1*KSRPn}-{wc1*KSRPa}-{wi1*KSRPa}
+KSRPn'={wi1*KSRPa}-{we1*KSRPn}
+PreMiR16'={ws2*KSRPn}-{wd5*PreMiR16}
+MiR16'={wa2*PreMiR16}-{wd6*MiR16}
+Gbax'={(pq2+pq3*P53p^2)*(NAbax-Gbax)}-{pq4*Gbax}
+BAXt'={bs1*Gbax}-{bd1*BAXt}
+BAX'={bt1*BAXt}-{bd2*BAX}
+AP'=(if(P53p&gt;=69400)*if(BAX&gt;=34000))*(1-AP)
+Gp21'={(pq2+pq3*P53p^2)*(NAp21-Gp21)}-{pq4*Gp21}
+P21t'={bs2*Gp21}-{bd3*P21t}
+P21'={bt2*P21t}-{bd4*P21}
+CCBtmp'=if(P21&gt;=26900)*(1+10*CCBtmp)-10*CCBtmp
+CCB'=if(CCBtmp&gt;=230000)*(1-CCB)
+CCBtmp2'=if(P21&gt;=26900)
+CCB2'=if(CCBtmp2&gt;=230000)*(1-CCB2)
+</Eqs>
+      <parameters Npar="202">
+        <IR vType="0" Value="0" Desc=""/>
+        <TNF vType="0" Value="0" Desc=""/>
+        <siR vType="0" Value="0" Desc=""/>
+        <NAa20 vType="0" Value="2" Desc=""/>
+        <NAatm vType="0" Value="2" Desc=""/>
+        <NAbax vType="0" Value="2" Desc=""/>
+        <NAchk2 vType="0" Value="2" Desc=""/>
+        <NAikba vType="0" Value="2" Desc=""/>
+        <NAmdm2 vType="0" Value="2" Desc=""/>
+        <NAp53 vType="0" Value="2" Desc=""/>
+        <NApten vType="0" Value="2" Desc=""/>
+        <NAwip1 vType="0" Value="2" Desc=""/>
+        <AKTtot vType="0" Value="34000" Desc=""/>
+        <CREBtot vType="0" Value="100000" Desc=""/>
+        <KMRNtot vType="0" Value="10000" Desc=""/>
+        <KSRPtot vType="0" Value="100000" Desc=""/>
+        <PIPtot vType="0" Value="800000" Desc=""/>
+        <kv vType="0" Value="5" Desc=""/>
+        <pa1 vType="0" Value="8,6E-5" Desc=""/>
+        <pa2 vType="0" Value="5E-5" Desc=""/>
+        <pa3 vType="0" Value="5E-5" Desc=""/>
+        <pa4 vType="0" Value="3E-7" Desc=""/>
+        <pa5 vType="0" Value="1,2E-7" Desc=""/>
+        <pa6 vType="0" Value="2E-7" Desc=""/>
+        <pa7 vType="0" Value="5E-5" Desc=""/>
+        <pa8 vType="0" Value="4E-11" Desc=""/>
+        <pa9 vType="0" Value="0,0007" Desc=""/>
+        <pc1 vType="0" Value="1,6E-9" Desc=""/>
+        <pc2 vType="0" Value="0,0001" Desc=""/>
+        <pc3 vType="0" Value="5,17E-9" Desc=""/>
+        <pc4 vType="0" Value="0,00018" Desc=""/>
+        <pd1 vType="0" Value="8,3E-5" Desc=""/>
+        <pd2 vType="0" Value="5,97E-5" Desc=""/>
+        <pd3 vType="0" Value="1,45E-13" Desc=""/>
+        <pd4 vType="0" Value="2,41E-5" Desc=""/>
+        <pd5 vType="0" Value="1,45E-14" Desc=""/>
+        <pd6 vType="0" Value="7,93E-5" Desc=""/>
+        <pd7 vType="0" Value="4,79E-5" Desc=""/>
+        <pd8 vType="0" Value="7,04E-5" Desc=""/>
+        <pd9 vType="0" Value="4,5E-5" Desc=""/>
+        <pd10 vType="0" Value="0,0003" Desc=""/>
+        <pd11 vType="0" Value="5E-5" Desc=""/>
+        <pi1 vType="0" Value="0,00075" Desc=""/>
+        <pm1 vType="0" Value="1" Desc=""/>
+        <pm2 vType="0" Value="1" Desc=""/>
+        <pm3 vType="0" Value="55400" Desc=""/>
+        <pq1 vType="0" Value="0,0021" Desc=""/>
+        <pq2 vType="0" Value="0,0001" Desc=""/>
+        <pq3 vType="0" Value="5,87E-13" Desc=""/>
+        <pq4 vType="0" Value="0,003" Desc=""/>
+        <ps1 vType="0" Value="0,029" Desc=""/>
+        <ps2 vType="0" Value="0,031" Desc=""/>
+        <ps3 vType="0" Value="0,06" Desc=""/>
+        <pt1 vType="0" Value="0,35" Desc=""/>
+        <pt2 vType="0" Value="0,47" Desc=""/>
+        <pt3 vType="0" Value="0,1" Desc=""/>
+        <M vType="0" Value="1000" Desc=""/>
+        <na1 vType="0" Value="5E-7" Desc=""/>
+        <na2 vType="0" Value="1E-7" Desc=""/>
+        <na3 vType="0" Value="0,0001" Desc=""/>
+        <na4 vType="0" Value="0,0005" Desc=""/>
+        <na5 vType="0" Value="5E-6" Desc=""/>
+        <na6 vType="0" Value="5E-10" Desc="9E-9"/>
+        <na7 vType="0" Value="4E-6" Desc=""/>
+        <nc1 vType="0" Value="0,01" Desc=""/>
+        <nc2 vType="0" Value="0,003" Desc=""/>
+        <nc3 vType="0" Value="0,0006" Desc=""/>
+        <nd1 vType="0" Value="0,00231" Desc=""/>
+        <nd2 vType="0" Value="0,000128" Desc=""/>
+        <nd3 vType="0" Value="0,00116" Desc=""/>
+        <nd4 vType="0" Value="2,4E-5" Desc=""/>
+        <ne1 vType="0" Value="0,005" Desc=""/>
+        <ne2 vType="0" Value="0,05" Desc=""/>
+        <ni1 vType="0" Value="0,01" Desc=""/>
+        <ni2 vType="0" Value="0,0087" Desc=""/>
+        <nk1 vType="0" Value="2E-5" Desc=""/>
+        <nk2 vType="0" Value="1,76E-6" Desc=""/>
+        <nm2 vType="0" Value="10000" Desc=""/>
+        <nm3 vType="0" Value="1" Desc=""/>
+        <nm4 vType="0" Value="10000" Desc=""/>
+        <nq1 vType="0" Value="1,68E-7" Desc=""/>
+        <nq2 vType="0" Value="1E-6" Desc=""/>
+        <ns1 vType="0" Value="0,1" Desc=""/>
+        <nt1 vType="0" Value="0,0836" Desc=""/>
+        <ma1 vType="0" Value="0,58" Desc=""/>
+        <ma2 vType="0" Value="0" Desc=""/>
+        <ma3 vType="0" Value="0,0015" Desc=""/>
+        <ma4 vType="0" Value="5E-6" Desc=""/>
+        <ma5 vType="0" Value="1E-7" Desc=""/>
+        <ma6 vType="0" Value="4E-7" Desc=""/>
+        <ma7 vType="0" Value="5E-5" Desc=""/>
+        <mc1 vType="0" Value="0,0038" Desc=""/>
+        <mc2 vType="0" Value="6E-8" Desc=""/>
+        <mc3 vType="0" Value="1E-8" Desc=""/>
+        <mc4 vType="0" Value="0,002" Desc=""/>
+        <mc5 vType="0" Value="0,001" Desc=""/>
+        <md1 vType="0" Value="3,77E-5" Desc=""/>
+        <md2 vType="0" Value="4,11E-5" Desc=""/>
+        <md3 vType="0" Value="4,18E-5" Desc=""/>
+        <md4 vType="0" Value="3,02E-5" Desc=""/>
+        <mm1 vType="0" Value="10" Desc=""/>
+        <mm2 vType="0" Value="1" Desc=""/>
+        <mm3 vType="0" Value="1" Desc=""/>
+        <mq1 vType="0" Value="0,003" Desc=""/>
+        <mq2 vType="0" Value="3E-8" Desc=""/>
+        <mq3 vType="0" Value="0,003" Desc=""/>
+        <ms1 vType="0" Value="0,005" Desc=""/>
+        <ms2 vType="0" Value="0,01" Desc=""/>
+        <mt1 vType="0" Value="0,005" Desc=""/>
+        <mt2 vType="0" Value="0,01" Desc=""/>
+        <wa1 vType="0" Value="2E-9" Desc=""/>
+        <wa2 vType="0" Value="0,0001" Desc=""/>
+        <wc1 vType="0" Value="5E-5" Desc=""/>
+        <wd1 vType="0" Value="6,46E-5" Desc=""/>
+        <wd2 vType="0" Value="0,0002" Desc=""/>
+        <wd3 vType="0" Value="2E-7" Desc=""/>
+        <wd4 vType="0" Value="9,63E-5" Desc=""/>
+        <wd5 vType="0" Value="2E-5" Desc=""/>
+        <wd6 vType="0" Value="5E-5" Desc=""/>
+        <we1 vType="0" Value="5E-5" Desc=""/>
+        <wi1 vType="0" Value="5E-5" Desc=""/>
+        <wq1 vType="0" Value="0,003" Desc=""/>
+        <ws1 vType="0" Value="0,02" Desc=""/>
+        <ws2 vType="0" Value="1E-7" Desc=""/>
+        <wt1 vType="0" Value="0,035" Desc=""/>
+        <bd1 vType="0" Value="2,87E-5" Desc=""/>
+        <bd2 vType="0" Value="3,5E-5" Desc=""/>
+        <bs1 vType="0" Value="0,01" Desc=""/>
+        <bt1 vType="0" Value="0,01" Desc=""/>
+        <bd3 vType="0" Value="9,5E-5" Desc=""/>
+        <bd4 vType="0" Value="0,000144" Desc=""/>
+        <bs2 vType="0" Value="0,02" Desc=""/>
+        <bt2 vType="0" Value="0,07" Desc=""/>
+        <NAp21 vType="0" Value="2" Desc=""/>
+        <nt1a vType="0" Value="0,01" Desc=""/>
+        <pq5 vType="0" Value="0,0021" Desc=""/>
+        <nm1 vType="0" Value="100000" Desc=""/>
+        <Gp53 vType="3" Value="1" Desc=""/>
+        <P53t vType="2" Value="354" Desc=""/>
+        <P53 vType="2" Value="30712" Desc=""/>
+        <P53p vType="2" Value="6118" Desc=""/>
+        <Gmdm2 vType="3" Value="0" Desc=""/>
+        <MDM2t vType="2" Value="31" Desc=""/>
+        <MDM2 vType="2" Value="34452" Desc=""/>
+        <MDM2p vType="2" Value="15481" Desc=""/>
+        <MDM2n vType="2" Value="163817" Desc=""/>
+        <MDM2ppn vType="2" Value="0" Desc=""/>
+        <Gpten vType="3" Value="0" Desc=""/>
+        <PTENt vType="2" Value="16" Desc=""/>
+        <PTEN vType="2" Value="31179" Desc=""/>
+        <PIP3 vType="2" Value="189766" Desc=""/>
+        <AKTa vType="2" Value="1379" Desc=""/>
+        <NFKB vType="2" Value="174" Desc=""/>
+        <NFKBn vType="2" Value="184" Desc=""/>
+        <IKBANFKB vType="2" Value="99629" Desc=""/>
+        <IKBApNFKB vType="2" Value="0" Desc=""/>
+        <IKBAnNFKBn vType="2" Value="35" Desc=""/>
+        <Gikba vType="3" Value="0" Desc=""/>
+        <IKBAt vType="2" Value="35" Desc=""/>
+        <IKBA vType="2" Value="818" Desc=""/>
+        <IKBAp vType="2" Value="0" Desc=""/>
+        <IKBAn vType="2" Value="1075" Desc=""/>
+        <Ga20 vType="3" Value="0" Desc=""/>
+        <A20t vType="2" Value="35" Desc=""/>
+        <A20 vType="2" Value="14583" Desc=""/>
+        <IKKK vType="2" Value="10000" Desc=""/>
+        <IKKKa vType="2" Value="0" Desc=""/>
+        <IKK vType="2" Value="200000" Desc=""/>
+        <IKKa vType="2" Value="0" Desc=""/>
+        <IKKi vType="2" Value="0" Desc=""/>
+        <IKKii vType="2" Value="0" Desc=""/>
+        <Ra vType="3" Value="0" Desc=""/>
+        <DSB vType="3" Value="0" Desc=""/>
+        <Gatm vType="3" Value="1" Desc=""/>
+        <ATMt vType="2" Value="132" Desc=""/>
+        <ATMn vType="2" Value="16130" Desc=""/>
+        <ATMpn vType="2" Value="0" Desc=""/>
+        <ATMan vType="2" Value="0" Desc=""/>
+        <Gchk2 vType="3" Value="1" Desc=""/>
+        <CHK2t vType="2" Value="215" Desc=""/>
+        <CHK2n vType="2" Value="71290" Desc=""/>
+        <CHK2pn vType="2" Value="0" Desc=""/>
+        <KMRNpn vType="2" Value="0" Desc=""/>
+        <CREBpn vType="2" Value="0" Desc=""/>
+        <Gwip1 vType="3" Value="0" Desc=""/>
+        <WIP1t vType="2" Value="29" Desc="29; sh-WIP: 8"/>
+        <WIP1n vType="2" Value="11814" Desc="11814; sh-WIP: 3254"/>
+        <KSRPa vType="2" Value="0" Desc=""/>
+        <KSRPn vType="2" Value="0" Desc=""/>
+        <PreMiR16 vType="2" Value="0" Desc=""/>
+        <MiR16 vType="2" Value="0" Desc=""/>
+        <Gbax vType="3" Value="0" Desc=""/>
+        <BAXt vType="2" Value="27" Desc=""/>
+        <BAX vType="2" Value="7683" Desc=""/>
+        <AP vType="2" Value="0" Desc=""/>
+        <Gp21 vType="3" Value="0" Desc=""/>
+        <P21 vType="2" Value="7992" Desc=""/>
+        <P21t vType="2" Value="16" Desc=""/>
+        <CCB vType="2" Value="0" Desc=""/>
+        <CCBtmp vType="2" Value="0" Desc=""/>
+        <CCB2 vType="2" Value="0" Desc=""/>
+        <CCBtmp2 vType="2" Value="0" Desc=""/>
+      </parameters>
+      <parchangerules Nrules="4">
+        <r1 Name="IR" Time="86400" Units="0" Value="0"/>
+        <r2 Name="IR" Time="86520" Units="0" Value="0"/>
+        <r3 Name="TNF" Time="864000" Units="0" Value="0"/>
+        <r4 Name="TNF" Time="900000" Units="0" Value="0"/>
+      </parchangerules>
+    </model1>
+  </models>
+</project>

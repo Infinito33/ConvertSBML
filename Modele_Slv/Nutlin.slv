@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="Nutlin">
+  <settings>
+    <ProjDesc/>
+    <SaveDir>/</SaveDir>
+  </settings>
+  <simfilehistory Nhist="0"/>
+  <models Nmodels="1">
+    <model1 name="PTENon">
+      <ModelDesc/>
+      <DetSolver>RungeKutta4</DetSolver>
+      <StochSolver>Direct Gillespie</StochSolver>
+      <SimTime units="0">345600</SimTime>
+      <Simdt units="0">0.1</Simdt>
+      <Savedt units="0">10</Savedt>
+      <StochIter>1</StochIter>
+      <Eqs>APIP3'=a2*(PIPtot-APIP3)-c0*PTEN*APIP3
+AAKT'=a3*(AKTtot-AAKT)*APIP3-c1*AAKT
+MDM2'=t0*MDM2t+c2*MDM2P+nc1*IMDM2-a4*MDM2*AAKT-d0*MDM2-na1*MDM2*NUT
+MDM2P'=a4*MDM2*AAKT+e0*MDM2N+nc1*IMDM2P-c2*MDM2P-i0*MDM2P-d0*MDM2P-na1*MDM2P*NUT
+PTEN'=t1*PTENt-d2*PTEN
+MDM2N'=i0*MDM2P+nc1*IMDM2N+nc2*P53MDM2N+nc2*P53PMDM2N+nc3*P53MDM2N+nc3*P53PMDM2N+nc2*P53UMDM2N+nc2*P53PUMDM2N+nc3*P53UMDM2N+nc3*P53PUMDM2N-e0*MDM2N-d0*MDM2N-na1*MDM2N*NUT-na2*P53*MDM2N-na3*P53P*MDM2N-na2*P53U*MDM2N-na3*P53PU*MDM2N
+P53'=t2*P53t+c3*P53P+nc3*P53MDM2N+nc4*P53U-(d3+na2*MDM2N)*P53-a0*P53
+P53P'=a0*P53+nc3*P53PMDM2N+nc4*P53PU-(d5+na3*MDM2N)*P53P-c3*P53P
+MDM2t'=s0*GMDM2-d7*MDM2t
+PTENt'=s1*GPTEN-d8*PTENt
+P53t'=s2*GP53-d10*P53t
+GMDM2'={(q0+q1*P53P^n1)*(NAmdm2-GMDM2)}-{q2*GMDM2}
+GPTEN'={(q0+q1*P53P^n1)*(NApten-GPTEN)}-{q2*GPTEN}
+GP53'={q5*(NAp53-GP53)}-{q6*GP53}
+IMDM2'=na1*MDM2*NUT+c2*IMDM2P-a4*IMDM2*AAKT-d0*IMDM2-nc1*IMDM2
+IMDM2P'=na1*MDM2P*NUT+a4*IMDM2*AAKT+e0*IMDM2N-c2*IMDM2P-i0*IMDM2P-d0*IMDM2P-nc1*IMDM2P
+IMDM2N'=na1*MDM2N*NUT+i0*IMDM2P-e0*IMDM2N-d0*IMDM2N-nc1*IMDM2N
+P53MDM2N'=na2*P53*MDM2N-nc2*P53MDM2N-nc3*P53MDM2N
+P53PMDM2N'=na3*P53P*MDM2N-nc2*P53PMDM2N-nc3*P53PMDM2N
+P53UMDM2N'=na2*P53U*MDM2N-nc2*P53UMDM2N-nc3*P53UMDM2N
+P53PUMDM2N'=na3*P53PU*MDM2N-nc2*P53PUMDM2N-nc3*P53PUMDM2N
+P53U'=nc2*P53MDM2N+nc3*P53UMDM2N+nc4*P53UU+c3*P53PU-na2*P53U*MDM2N-nd1*P53U-nc4*P53U-a0*P53U
+P53PU'=a0*P53U+nc2*P53PMDM2N+nc3*P53PUMDM2N+nc4*P53PUU-na3*P53PU*MDM2N-nd1*P53PU-nc4*P53PU-c3*P53PU
+P53UU'=nc2*P53UMDM2N+c3*P53PUU-nd2*P53UU-nc4*P53UU-a0*P53UU
+P53PUU'=a0*P53UU+nc2*P53PUMDM2N-nd2*P53PUU-nc4*P53PUU-c3*P53PUU
+NUT'=aaa1+Ne*((-(1+Ka*Bmax-Ka*Inp3)+((1+Ka*Bmax-Ka*Inp3)^2+4*Ka*Inp3)^0.5)/(2*Ka))/(nk1+((-(1+Ka*Bmax-Ka*Inp3)+((1+Ka*Bmax-Ka*Inp3)^2+4*Ka*Inp3)^0.5)/(2*Ka)))+nc1*IMDM2+nc1*IMDM2P+nc1*IMDM2N-Ni*NUT-na1*MDM2*NUT-na1*MDM2P*NUT-na1*MDM2N*NUT
+</Eqs>
+      <parameters Npar="76">
+        <a0 vType="0" Value="0,0001" Desc=""/>
+        <a2 vType="0" Value="5E-5" Desc=""/>
+        <a3 vType="0" Value="2E-9" Desc=""/>
+        <a4 vType="0" Value="2,25E-7" Desc=""/>
+        <AKTtot vType="0" Value="34000" Desc=""/>
+        <c0 vType="0" Value="2E-9" Desc=""/>
+        <c1 vType="0" Value="0,01" Desc=""/>
+        <c2 vType="0" Value="0,0001" Desc=""/>
+        <c3 vType="0" Value="8E-5" Desc=""/>
+        <d0 vType="0" Value="0,000385" Desc=""/>
+        <d2 vType="0" Value="1,93E-5" Desc=""/>
+        <d3 vType="0" Value="1,93E-5" Desc=""/>
+        <d5 vType="0" Value="1,93E-5" Desc=""/>
+        <e0 vType="0" Value="0" Desc=""/>
+        <i0 vType="0" Value="0,0005" Desc=""/>
+        <na1 vType="0" Value="6E-5" Desc=""/>
+        <na2 vType="0" Value="8,3E-6" Desc=""/>
+        <na3 vType="0" Value="8,3E-7" Desc=""/>
+        <nc1 vType="0" Value="0,2" Desc=""/>
+        <nc2 vType="0" Value="0,08" Desc=""/>
+        <nc3 vType="0" Value="2" Desc=""/>
+        <nc4 vType="0" Value="0,03" Desc=""/>
+        <PIPtot vType="0" Value="800000" Desc=""/>
+        <t0 vType="0" Value="0,15" Desc=""/>
+        <t1 vType="0" Value="0,005" Desc=""/>
+        <t2 vType="0" Value="0,03" Desc=""/>
+        <d10 vType="0" Value="2,13E-5" Desc=""/>
+        <d7 vType="0" Value="6,15E-5" Desc=""/>
+        <d8 vType="0" Value="4,81E-5" Desc=""/>
+        <n1 vType="0" Value="2" Desc=""/>
+        <NAmdm2 vType="0" Value="2" Desc=""/>
+        <q0 vType="0" Value="2E-5" Desc=""/>
+        <q1 vType="0" Value="1E-12" Desc=""/>
+        <q2 vType="0" Value="0,004" Desc=""/>
+        <s0 vType="0" Value="0,1" Desc=""/>
+        <s1 vType="0" Value="0,1" Desc=""/>
+        <s2 vType="0" Value="0,1" Desc=""/>
+        <NAp53 vType="0" Value="2" Desc=""/>
+        <NApten vType="0" Value="2" Desc=""/>
+        <q5 vType="0" Value="3E-5" Desc=""/>
+        <q6 vType="0" Value="0,0008" Desc=""/>
+        <Bmax vType="0" Value="1,8E-5" Desc=""/>
+        <Inp3 vType="0" Value="0" Desc=""/>
+        <Ka vType="0" Value="300000" Desc=""/>
+        <nd1 vType="0" Value="0,000193" Desc=""/>
+        <nd2 vType="0" Value="0,0193" Desc=""/>
+        <Ne vType="0" Value="190000000" Desc=""/>
+        <Ni vType="0" Value="0,005" Desc=""/>
+        <nk1 vType="0" Value="1,5" Desc=""/>
+        <aaa1 vType="0" Value="0" Desc=""/>
+        <IMDM2 vType="2" Value="0" Desc=""/>
+        <IMDM2N vType="2" Value="0" Desc=""/>
+        <IMDM2P vType="2" Value="0" Desc=""/>
+        <NUT vType="2" Value="0" Desc=""/>
+        <P53MDM2N vType="2" Value="1353" Desc=""/>
+        <P53PMDM2N vType="2" Value="148" Desc=""/>
+        <P53PU vType="2" Value="400" Desc=""/>
+        <P53PUMDM2N vType="2" Value="3" Desc=""/>
+        <P53U vType="2" Value="3286" Desc=""/>
+        <P53UMDM2N vType="2" Value="278" Desc=""/>
+        <GP53 vType="2" Value="0" Desc=""/>
+        <GPTEN vType="2" Value="0" Desc=""/>
+        <MDM2t vType="2" Value="245" Desc=""/>
+        <P53t vType="2" Value="339" Desc=""/>
+        <PTENt vType="2" Value="314" Desc=""/>
+        <AAKT vType="2" Value="1234" Desc=""/>
+        <APIP3 vType="2" Value="188300" Desc=""/>
+        <MDM2 vType="2" Value="57990" Desc=""/>
+        <MDM2N vType="2" Value="21228" Desc=""/>
+        <MDM2P vType="2" Value="16345" Desc=""/>
+        <P53 vType="2" Value="15976" Desc=""/>
+        <P53P vType="2" Value="17502" Desc=""/>
+        <PTEN vType="2" Value="81218" Desc=""/>
+        <GMDM2 vType="2" Value="0" Desc=""/>
+        <P53PUU vType="2" Value="6" Desc=""/>
+        <P53UU vType="2" Value="451" Desc=""/>
+      </parameters>
+      <parchangerules Nrules="1">
+        <r1 Name="aaa1" Time="200000" Units="0" Value="10"/>
+      </parchangerules>
+    </model1>
+  </models>
+</project>

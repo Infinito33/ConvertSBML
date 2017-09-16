@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="GeneSwitching">
+  <settings>
+    <ProjDesc></ProjDesc>
+    <SaveDir>D:\Solvary\GeneSwitching</SaveDir>
+  </settings>
+  <simfilehistory Nhist="100">
+    <h1 Name="167T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s1.slr" Repeats="1000" SimDate="2015-02-18 11:42" Idx="1"/>
+    <h2 Name="0T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s2.slr" Repeats="1000" SimDate="2015-02-18 12:18" Idx="2"/>
+    <h3 Name="15T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s3.slr" Repeats="1000" SimDate="2015-02-18 12:56" Idx="3"/>
+    <h4 Name="18T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s4.slr" Repeats="1000" SimDate="2015-02-18 13:14" Idx="4"/>
+    <h5 Name="2T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s5.slr" Repeats="1000" SimDate="2015-02-18 14:04" Idx="5"/>
+    <h6 Name="19T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s6.slr" Repeats="1000" SimDate="2015-02-18 14:24" Idx="6"/>
+    <h7 Name="3T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s7.slr" Repeats="1000" SimDate="2015-02-18 15:10" Idx="7"/>
+    <h8 Name="28T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s8.slr" Repeats="1000" SimDate="2015-02-18 15:29" Idx="8"/>
+    <h9 Name="26T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s9.slr" Repeats="1000" SimDate="2015-02-18 15:54" Idx="9"/>
+    <h10 Name="06T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s10.slr" Repeats="1000" SimDate="2015-02-18 16:51" Idx="10"/>
+    <h11 Name="0T1" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s11.slr" Repeats="1000" SimDate="2015-02-18 17:51" Idx="11"/>
+    <h12 Name="06T1" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s12.slr" Repeats="1000" SimDate="2015-02-18 18:10" Idx="12"/>
+    <h13 Name="15T1" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s13.slr" Repeats="1000" SimDate="2015-02-18 21:06" Idx="13"/>
+    <h14 Name="167T1" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s14.slr" Repeats="1000" SimDate="2015-02-18 21:30" Idx="14"/>
+    <h15 Name="18T1" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s15.slr" Repeats="1000" SimDate="2015-02-18 21:57" Idx="15"/>
+    <h16 Name="19T1" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s16.slr" Repeats="1000" SimDate="2015-02-18 22:40" Idx="16"/>
+    <h17 Name="2T1" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s17.slr" Repeats="1000" SimDate="2015-02-19 00:19" Idx="17"/>
+    <h18 Name="26T1" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s18.slr" Repeats="1000" SimDate="2015-02-19 11:09" Idx="18"/>
+    <h19 Name="0T30" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s19.slr" Repeats="1000" SimDate="2015-02-19 11:28" Idx="19"/>
+    <h20 Name="06T30" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s20.slr" Repeats="1000" SimDate="2015-02-19 12:05" Idx="20"/>
+    <h21 Name="15T30" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s21.slr" Repeats="1000" SimDate="2015-02-19 12:26" Idx="21"/>
+    <h22 Name="167T30" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s22.slr" Repeats="1000" SimDate="2015-02-19 12:39" Idx="22"/>
+    <h23 Name="18T30" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s23.slr" Repeats="1000" SimDate="2015-02-19 14:48" Idx="23"/>
+    <h24 Name="19T30" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s24.slr" Repeats="1000" SimDate="2015-02-19 15:31" Idx="24"/>
+    <h25 Name="2T30" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s25.slr" Repeats="1000" SimDate="2015-02-19 16:09" Idx="25"/>
+    <h26 Name="26T30" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s26.slr" Repeats="1000" SimDate="2015-02-19 16:40" Idx="26"/>
+    <h27 Name="0T60" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s27.slr" Repeats="1000" SimDate="2015-02-19 16:58" Idx="27"/>
+    <h28 Name="06T60" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s28.slr" Repeats="1000" SimDate="2015-02-19 17:57" Idx="28"/>
+    <h29 Name="15T60" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s29.slr" Repeats="1000" SimDate="2015-02-19 19:01" Idx="29"/>
+    <h30 Name="167T60" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s30.slr" Repeats="1000" SimDate="2015-02-19 22:07" Idx="30"/>
+    <h31 Name="18T60" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s31.slr" Repeats="1000" SimDate="2015-02-19 23:00" Idx="31"/>
+    <h32 Name="19T60" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s32.slr" Repeats="1000" SimDate="2015-02-20 09:44" Idx="32"/>
+    <h33 Name="2T60" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s33.slr" Repeats="1000" SimDate="2015-02-20 10:18" Idx="33"/>
+    <h34 Name="26T60" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s34.slr" Repeats="1000" SimDate="2015-02-20 16:14" Idx="34"/>
+    <h35 Name="0T900" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s35.slr" Repeats="1000" SimDate="2015-02-20 16:40" Idx="35"/>
+    <h36 Name="06T900" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s36.slr" Repeats="1000" SimDate="2015-02-20 22:02" Idx="36"/>
+    <h37 Name="15T900" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s37.slr" Repeats="1000" SimDate="2015-02-20 22:49" Idx="37"/>
+    <h38 Name="167T900" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s38.slr" Repeats="1000" SimDate="2015-02-20 23:21" Idx="38"/>
+    <h39 Name="18T900" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s39.slr" Repeats="1000" SimDate="2015-02-21 10:51" Idx="39"/>
+    <h40 Name="19T900" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s40.slr" Repeats="1000" SimDate="2015-02-21 11:11" Idx="40"/>
+    <h41 Name="2T900" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s41.slr" Repeats="1000" SimDate="2015-02-21 11:32" Idx="41"/>
+    <h42 Name="26T900" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s42.slr" Repeats="1000" SimDate="2015-02-21 12:00" Idx="42"/>
+    <h43 Name="0T1800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s43.slr" Repeats="1000" SimDate="2015-02-21 12:37" Idx="43"/>
+    <h44 Name="06T1800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s44.slr" Repeats="1000" SimDate="2015-02-21 12:52" Idx="44"/>
+    <h45 Name="15T1800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s45.slr" Repeats="1000" SimDate="2015-02-21 13:08" Idx="45"/>
+    <h46 Name="167T1800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s46.slr" Repeats="1000" SimDate="2015-02-21 13:26" Idx="46"/>
+    <h47 Name="18T1800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s47.slr" Repeats="1000" SimDate="2015-02-21 13:55" Idx="47"/>
+    <h48 Name="19T1800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s48.slr" Repeats="1000" SimDate="2015-02-21 14:17" Idx="48"/>
+    <h49 Name="2T1800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s49.slr" Repeats="1000" SimDate="2015-02-21 14:30" Idx="49"/>
+    <h50 Name="26T1800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s50.slr" Repeats="1000" SimDate="2015-02-21 14:54" Idx="50"/>
+    <h51 Name="0T7200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s51.slr" Repeats="1000" SimDate="2015-02-21 17:01" Idx="51"/>
+    <h52 Name="06T7200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s52.slr" Repeats="1000" SimDate="2015-02-21 17:14" Idx="52"/>
+    <h53 Name="15T7200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s53.slr" Repeats="1000" SimDate="2015-02-21 17:45" Idx="53"/>
+    <h54 Name="167T7200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s54.slr" Repeats="1000" SimDate="2015-02-21 22:03" Idx="54"/>
+    <h55 Name="18T7200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s55.slr" Repeats="1000" SimDate="2015-02-21 22:54" Idx="55"/>
+    <h56 Name="19T7200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s56.slr" Repeats="1000" SimDate="2015-02-21 23:13" Idx="56"/>
+    <h57 Name="2T7200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s57.slr" Repeats="1000" SimDate="2015-02-21 23:40" Idx="57"/>
+    <h58 Name="26T7200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s58.slr" Repeats="1000" SimDate="2015-02-22 00:42" Idx="58"/>
+    <h59 Name="0T10800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s59.slr" Repeats="1000" SimDate="2015-02-22 09:53" Idx="59"/>
+    <h60 Name="06T10800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s60.slr" Repeats="1000" SimDate="2015-02-22 10:25" Idx="60"/>
+    <h61 Name="15T10800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s61.slr" Repeats="1000" SimDate="2015-02-22 10:53" Idx="61"/>
+    <h62 Name="167T10800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s62.slr" Repeats="1000" SimDate="2015-02-22 11:06" Idx="62"/>
+    <h63 Name="18T10800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s63.slr" Repeats="1000" SimDate="2015-02-22 11:37" Idx="63"/>
+    <h64 Name="19T10800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s64.slr" Repeats="1000" SimDate="2015-02-22 12:02" Idx="64"/>
+    <h65 Name="2T10800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s65.slr" Repeats="1000" SimDate="2015-02-22 12:31" Idx="65"/>
+    <h66 Name="26T10800" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s66.slr" Repeats="1000" SimDate="2015-02-22 12:51" Idx="66"/>
+    <h67 Name="0T21600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s67.slr" Repeats="1000" SimDate="2015-02-22 13:09" Idx="67"/>
+    <h68 Name="06T21600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s68.slr" Repeats="1000" SimDate="2015-02-22 13:31" Idx="68"/>
+    <h69 Name="15T21600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s69.slr" Repeats="1000" SimDate="2015-02-22 13:45" Idx="69"/>
+    <h70 Name="167T21600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s70.slr" Repeats="1000" SimDate="2015-02-22 14:01" Idx="70"/>
+    <h71 Name="18T21600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s71.slr" Repeats="1000" SimDate="2015-02-22 14:20" Idx="71"/>
+    <h72 Name="19T21600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s72.slr" Repeats="1000" SimDate="2015-02-22 14:45" Idx="72"/>
+    <h73 Name="2T21600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s73.slr" Repeats="1000" SimDate="2015-02-22 15:03" Idx="73"/>
+    <h74 Name="26T21600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s74.slr" Repeats="1000" SimDate="2015-02-22 15:25" Idx="74"/>
+    <h75 Name="0T43200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s75.slr" Repeats="1000" SimDate="2015-02-22 15:51" Idx="75"/>
+    <h76 Name="06T43200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s76.slr" Repeats="1000" SimDate="2015-02-22 16:16" Idx="76"/>
+    <h77 Name="15T43200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s77.slr" Repeats="1000" SimDate="2015-02-22 16:40" Idx="77"/>
+    <h78 Name="167T43200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s78.slr" Repeats="1000" SimDate="2015-02-22 17:01" Idx="78"/>
+    <h79 Name="18T43200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s79.slr" Repeats="1000" SimDate="2015-02-22 17:45" Idx="79"/>
+    <h80 Name="19T43200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s80.slr" Repeats="1000" SimDate="2015-02-22 20:27" Idx="80"/>
+    <h81 Name="2T43200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s81.slr" Repeats="1000" SimDate="2015-02-22 21:13" Idx="81"/>
+    <h82 Name="26T43200" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s82.slr" Repeats="1000" SimDate="2015-02-22 21:32" Idx="82"/>
+    <h83 Name="0T86400" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s83.slr" Repeats="1000" SimDate="2015-02-22 22:41" Idx="83"/>
+    <h84 Name="06T86400" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s84.slr" Repeats="1000" SimDate="2015-02-22 22:56" Idx="84"/>
+    <h85 Name="15T86400" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s85.slr" Repeats="1000" SimDate="2015-02-23 07:45" Idx="85"/>
+    <h86 Name="167T86400" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s86.slr" Repeats="1000" SimDate="2015-02-23 08:15" Idx="86"/>
+    <h87 Name="18T86400" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s87.slr" Repeats="1000" SimDate="2015-02-23 08:57" Idx="87"/>
+    <h88 Name="19T86400" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s88.slr" Repeats="1000" SimDate="2015-02-23 17:16" Idx="88"/>
+    <h89 Name="2T86400" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s89.slr" Repeats="1000" SimDate="2015-02-23 18:38" Idx="89"/>
+    <h90 Name="26T86400" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s90.slr" Repeats="1000" SimDate="2015-02-23 21:12" Idx="90"/>
+    <h91 Name="02T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s91.slr" Repeats="1000" SimDate="2015-02-23 21:54" Idx="91"/>
+    <h92 Name="04T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s92.slr" Repeats="1000" SimDate="2015-02-23 23:08" Idx="92"/>
+    <h93 Name="08T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s93.slr" Repeats="1000" SimDate="2015-02-23 23:36" Idx="93"/>
+    <h94 Name="1T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s94.slr" Repeats="1000" SimDate="2015-02-24 08:31" Idx="94"/>
+    <h95 Name="12T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s95.slr" Repeats="1000" SimDate="2015-02-24 08:45" Idx="95"/>
+    <h96 Name="14T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s96.slr" Repeats="1000" SimDate="2015-02-24 09:03" Idx="96"/>
+    <h97 Name="16T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s97.slr" Repeats="1000" SimDate="2015-02-24 15:48" Idx="97"/>
+    <h98 Name="17T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s98.slr" Repeats="1000" SimDate="2015-02-24 16:19" Idx="98"/>
+    <h99 Name="22T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s99.slr" Repeats="1000" SimDate="2015-02-24 16:46" Idx="99"/>
+    <h100 Name="24T3600" Model="Model 2" FileDir="D:\Solvary\GeneSwitching\GeneSwitching_Model 2_s100.slr" Repeats="1000" SimDate="2015-02-24 16:58" Idx="100"/>
+  </simfilehistory>
+  <models Nmodels="1">
+    <model1 name="Model 2">
+      <ModelDesc></ModelDesc>
+      <DetSolver>RungeKutta4</DetSolver>
+      <StochSolver>Direct Gillespie</StochSolver>
+      <SimTime units="0">345600</SimTime>
+      <Simdt units="0">0,1</Simdt>
+      <Savedt units="0">10</Savedt>
+      <StochIter>1000</StochIter>
+      <Eqs>G'={qa*(NG-G)}-{qd*G*A}
+mRNA'=s*G-dmRNA*mRNA
+A'=tA*mRNA-dA*A-dd*DRUG*A
+Vt'=if(A&lt;=Th)*(1+10*Vt)-10*Vt
+Viab'=if(Vt&gt;=ThPeriod)*(1-Viab)
+</Eqs>
+      <parameters Npar="16">
+        <dA vType="0" Value="0,00020822" Desc=""/>
+        <dmRNA vType="0" Value="0,00015" Desc=""/>
+        <NG vType="0" Value="2" Desc=""/>
+        <qa vType="0" Value="0,0002" Desc="0.0002"/>
+        <qd vType="0" Value="1,25E-9" Desc="1.25E-9"/>
+        <s vType="0" Value="0,05" Desc=""/>
+        <tA vType="0" Value="0,1" Desc=""/>
+        <dd vType="0" Value="0,0002084" Desc=""/>
+        <DRUG vType="0" Value="0" Desc=""/>
+        <Th vType="0" Value="80000" Desc=""/>
+        <ThPeriod vType="0" Value="43200" Desc="21600-6h,"/>
+        <A vType="2" Value="160000" Desc=""/>
+        <G vType="3" Value="1" Desc=""/>
+        <mRNA vType="2" Value="333" Desc=""/>
+        <Viab vType="2" Value="0" Desc=""/>
+        <Vt vType="2" Value="0" Desc=""/>
+      </parameters>
+      <parchangerules Nrules="1">
+        <r1 Name="DRUG" Time="86400" Units="0" Value="2,4"/>
+      </parchangerules>
+    </model1>
+  </models>
+</project>
