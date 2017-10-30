@@ -15,7 +15,7 @@ import javafx.scene.control.TextArea;
  *
  * @author Magda
  */
-public class StatisticsView implements Initializable {
+public class StatisticsSlvView implements Initializable {
 
     @FXML
     private Label modelPathLbl;

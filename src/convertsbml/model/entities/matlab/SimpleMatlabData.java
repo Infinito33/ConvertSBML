@@ -9,9 +9,9 @@ import java.util.List;
  * @author Magda
  */
 public class SimpleMatlabData extends AbstractMatlabModel {
-    
+
     private List<String> yEquations;
-    
+
     public SimpleMatlabData() {
         yEquations = new ArrayList<>();
     }
@@ -23,7 +23,5 @@ public class SimpleMatlabData extends AbstractMatlabModel {
     public void setyEquations(List<String> yEquations) {
         this.yEquations = yEquations;
     }
-    
-    
-    
+
 }

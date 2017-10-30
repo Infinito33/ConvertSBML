@@ -1,23 +1,13 @@
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 2017-08-01, 13:30:44
-    Author     : tomasz.huchro
-*/
-
-/*
 Customizing scroll-pane -> http://blog.ngopal.com.np/2012/07/11/customize-scrollbar-via-css/
 */
 
 .custom-scroll-pane {
-    -fx-background-color: #2980B9;
+    -fx-background-color: transparent;
 }
 
 .custom-scroll-pane .viewport {
-    -fx-background-color: #2980B9;
+    -fx-background-color: transparent;
 }
 
 .custom-scroll-pane .track {
@@ -55,13 +45,13 @@ Custom menu button
     -fx-padding: 0 0 0 25;
     -fx-font-family: "Book Antiqua";
     -fx-font-size: 16px;
-    -fx-text-fill: #ecf0f1;
+    -fx-text-fill: #f1f3f2;
     -fx-font-weight: bold;
     -fx-alignment: CENTER_LEFT;
 }
 
 .menu-button:hover {
-    -fx-background-color: #2e90d1;
+    -fx-background-color: #c2d3da;
 }
 
 /*
@@ -74,12 +64,12 @@ Custom sub-menu button
     -fx-padding: 0 0 0 25;
     -fx-font-family: "Book Antiqua";
     -fx-font-size: 14px;
-    -fx-text-fill: #ecf0f1;
+    -fx-text-fill: #F1F3F2;
     -fx-alignment: CENTER_LEFT; 
 }
 
 .sub-menu-button:hover {
-    -fx-background-color: #2e90d1;
+    -fx-background-color: #c2d3da;
 }
 
 /*
@@ -88,7 +78,7 @@ Custom menu titled-pane
 .menu-titled-pane {
     -fx-font-family: "Book Antiqua";
     -fx-font-size: 16px;
-    -fx-text-fill: #ecf0f1;
+    -fx-text-fill: #f1f3f2;
     -fx-font-weight: bold;
 }
 
@@ -98,11 +88,15 @@ Custom menu titled-pane
 }
 
 .menu-titled-pane .title:hover {
-    -fx-background-color: #2e90d1;
+    -fx-background-color: #c2d3da;
 }
 
 .menu-titled-pane .content {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-padding: -10 0 0 0;
+}
+
+.custom-label {
+    -fx-text-fill: #f1f3f2;
 }

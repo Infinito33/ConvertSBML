@@ -18,10 +18,14 @@ public abstract class AbstractMatlabModel {
     private List<ParameterMatlab> parameters;
     private File modelFile;
     private File parameterFile;
+    private List<String> modelContent;
+    private List<String> parametersContent;
 
     public AbstractMatlabModel() {
         equations = new ArrayList<>();
         parameters = new ArrayList<>();
+        modelContent = new ArrayList<>();
+        parametersContent = new ArrayList<>();
     }
 
     public String getFunction() {
@@ -78,6 +82,22 @@ public abstract class AbstractMatlabModel {
 
     public void setParameterFile(File parameterFile) {
         this.parameterFile = parameterFile;
+    }
+
+    public List<String> getModelContent() {
+        return modelContent;
+    }
+
+    public void setModelContent(List<String> modelContent) {
+        this.modelContent = modelContent;
+    }
+
+    public List<String> getParametersContent() {
+        return parametersContent;
+    }
+
+    public void setParametersContent(List<String> parametersContent) {
+        this.parametersContent = parametersContent;
     }
 
 }

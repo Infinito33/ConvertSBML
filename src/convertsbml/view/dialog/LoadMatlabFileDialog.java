@@ -122,42 +122,48 @@ public class LoadMatlabFileDialog implements Initializable {
     @FXML
     public void chooseSimpleModelPathAction() {
         //String modelPath = loadFile("Wybierz ścieżkę modelu prostego", MATLAB_EXT);
-        String modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        //String modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        String modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
         simpleModelPath.setText(modelPath);
     }
 
     @FXML
     public void chooseSimpleParameterPathAction() {
         //String parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT);
-        String parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        //String parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        String parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
         simpleParametersPath.setText(parametersPath);
     }
 
     @FXML
     public void chooseComplexDeterministicModelPathAction() {
         //String modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT);
-        String modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        //String modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        String modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
         complexDeterministicModelPath.setText(modelPath);
     }
 
     @FXML
     public void chooseComplexDeterministicParametersPathAction() {
         //String parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT);
-        String parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        //String parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        String parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
         complexDeterministicParametersPath.setText(parametersPath);
     }
 
     @FXML
     public void chooseComplexStochasticModelPathAction() {
         //String modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT);
-        String modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        //String modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        String modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
         complexStochasticModelPath.setText(modelPath);
     }
 
     @FXML
     public void chooseComplexStochasticParametersPathAction() {
         //String parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT);
-        String parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        //String parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
+        String parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
         complexStochasticParametersPath.setText(parametersPath);
     }
 

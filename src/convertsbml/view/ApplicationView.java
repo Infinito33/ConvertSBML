@@ -10,10 +10,14 @@ import convertsbml.model.entities.slv.ModelSlv;
 import convertsbml.sbml.SBMLCreator;
 import convertsbml.slv.SlvReader;
 import convertsbml.controller.ApplicationController;
+import convertsbml.model.entities.matlab.ComplexMatlabData;
+import convertsbml.model.entities.matlab.SimpleMatlabData;
+import convertsbml.model.enums.EComplexityMatlabModel;
 import convertsbml.view.dialog.LoadMatlabFileDialog;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +28,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
@@ -83,12 +88,12 @@ public class ApplicationView implements Initializable {
     }
 
     @FXML
-    private void loadFileAction() {
+    private void loadSlvModelAction() {
         //Utworzenie obiektu do wybierania plików
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         //fileChooser.setInitialDirectory(new File("D:\\Programy\\Dropbox\\MY\\Projekt"));
-        fileChooser.setInitialDirectory(new File("C:\\Users\\tomasz.huchro\\Desktop\\Projekt"));
+        //fileChooser.setInitialDirectory(new File("C:\\Users\\tomasz.huchro\\Desktop\\Projekt"));
 
         //Pobranie okna sceny w celu wyświetlenia na nim dialogu do wyboru pliku
         Scene scene = mainPane.getScene();
@@ -108,6 +113,11 @@ public class ApplicationView implements Initializable {
         addSlvModelToMenuList(modelSlv);
     }
 
+    /**
+     * Dodanie modelu do listy w menu.
+     *
+     * @param modelSlv model, który zostanie dodany.
+     */
     private void addSlvModelToMenuList(ModelSlv modelSlv) {
         TitledPane modelPane = prepareSlvModelSubMenu(modelSlv);
         modelsBox.getChildren().add(modelPane);
@@ -116,7 +126,7 @@ public class ApplicationView implements Initializable {
     /**
      * Przygotowanie pod-menu osobno dla kazdego modelu.
      *
-     * @param modelName nazwa modelu.
+     * @param modelSlv model z danymi.
      * @return rozwijany panel z modelem.
      */
     private TitledPane prepareSlvModelSubMenu(ModelSlv modelSlv) {
@@ -125,7 +135,7 @@ public class ApplicationView implements Initializable {
         showContentBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showSlvModelContentAction(modelSlv);
+                showModelContentAction(modelSlv.getContent(), modelSlv.getName());
             }
         });
         Button showStatisticsBtn = new Button("Statystyki");
@@ -136,6 +146,12 @@ public class ApplicationView implements Initializable {
             }
         });
         Button convertToSbmlBtn = new Button("Konwertuj do SBML");
+        convertToSbmlBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                convertSlvToSbmlAction(modelSlv);
+            }
+        });
         showContentBtn.getStyleClass().add("sub-menu-button");
         showStatisticsBtn.getStyleClass().add("sub-menu-button");
         convertToSbmlBtn.getStyleClass().add("sub-menu-button");
@@ -144,7 +160,7 @@ public class ApplicationView implements Initializable {
         convertToSbmlBtn.setMinHeight(30.0);
 
         VBox innerBox = new VBox(showContentBtn, showStatisticsBtn, convertToSbmlBtn);
-        TitledPane modelPane = new TitledPane(modelSlv.getName(), innerBox);
+        TitledPane modelPane = new TitledPane("SLV: " + modelSlv.getName(), innerBox);
         modelPane.setExpanded(Boolean.FALSE);
         modelPane.getStyleClass().add("menu-titled-pane");
         modelPane.setMaxWidth(Double.MAX_VALUE);
@@ -160,14 +176,15 @@ public class ApplicationView implements Initializable {
         return modelPane;
     }
 
-    private void showSlvModelContentAction(ModelSlv modelSlv) {
+    private void showModelContentAction(List<String> modelContent, String modelName) {
         contentPane.getChildren().clear();
         GridPane content = (GridPane) resourceManager.loadFxml("/convertsbml/view/fxml/slv/ContentView.fxml");
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/convertsbml/view/fxml/slv/ContentView.fxml"));
-        //StatisticsView statView = (StatisticsView) loader.getController();
 
+        Label modelNameLbl = (Label) content.getChildren().get(1);
+        modelNameLbl.setText("SLV: " + modelName);
+        
         TextArea contentArea = (TextArea) content.getChildren().get(0);
-        for (String line : modelSlv.getContent()) {
+        for (String line : modelContent) {
             contentArea.appendText(line + "\n");
         }
         contentPane.getChildren().add(content);
@@ -175,23 +192,22 @@ public class ApplicationView implements Initializable {
 
     private void showSlvModelStatisticsAction(ModelSlv modelSlv) {
         contentPane.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/convertsbml/view/fxml/slv/StatisticsView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/convertsbml/view/fxml/slv/StatisticsSlvView.fxml"));
         GridPane content = null;
         try {
             content = loader.load();
         } catch (IOException ex) {
             Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        StatisticsView statView = (StatisticsView) loader.getController();
+        StatisticsSlvView statView = (StatisticsSlvView) loader.getController();
         statView.setData(modelSlv);
         statView.postInitialize();
         contentPane.getChildren().add(content);
     }
 
-    @FXML
-    public void testSBML(ActionEvent event) {
+    public void convertSlvToSbmlAction(ModelSlv modelSlv) {
         SBMLCreator sbmlCreator = new SBMLCreator();
-        sbmlCreator.createSBMLFile(appModel.getSlvModels().get(0));
+        sbmlCreator.createSBMLFile(modelSlv);
     }
 
     @FXML
@@ -199,19 +215,171 @@ public class ApplicationView implements Initializable {
         LoadMatlabFileDialogController controller = new LoadMatlabFileDialogController();
         LoadMatlabFileDialog dialog = controller.getView();
         Boolean dialogResult = dialog.showDialog();
+        ModelMatlab matlabModel = null;
         if (dialogResult) {
             LoadMatlabFileDialogModel model = dialog.getController().getModel();
             MatlabReader reader = new MatlabReader(model);
-            ModelMatlab matlabModel = null;
+
             if (model.getIsSimpleModel().get()) {
                 matlabModel = reader.readSimpleModel();
             } else {
                 matlabModel = reader.readComplexModel();
             }
-
-            appModel.setMatlabModel(matlabModel);
-            System.out.println("model done");
         }
+        if (matlabModel != null) {
+            appModel.addMatlabModel(matlabModel);
+            addMatlabModelToMenuList(matlabModel);
+        }
+    }
+
+    private void addMatlabModelToMenuList(ModelMatlab modelMatlab) {
+        TitledPane modelPane = prepareMatlabModelSubMenu(modelMatlab);
+        modelsBox.getChildren().add(modelPane);
+    }
+
+    /**
+     * Przygotowanie pod-menu osobno dla kazdego modelu.
+     *
+     * @param modelName nazwa modelu.
+     * @return rozwijany panel z modelem.
+     */
+    private TitledPane prepareMatlabModelSubMenu(ModelMatlab modelMatlab) {
+        if (modelMatlab.getGeneralType() == EComplexityMatlabModel.SIMPLE) {
+            return prepareSimpleMatlabModelSubMenu(modelMatlab.getSimpleModel());
+        } else {
+            return prepareComplexMatlabModelSubMenu(modelMatlab.getStochasticModel(), modelMatlab.getDeterministicModel());
+        }
+    }
+
+    private TitledPane prepareSimpleMatlabModelSubMenu(SimpleMatlabData simpleModel) {
+        Button showModelContentBtn = new Button("Zawartość modelu");
+        showModelContentBtn.setOnAction((ActionEvent event) -> {
+            showModelContentAction(simpleModel.getModelContent(), simpleModel.getModelFile().getName());
+        });
+        Button showParametersContentBtn = new Button("Zawartość parametrów");
+        showParametersContentBtn.setOnAction((ActionEvent) -> {
+            showModelContentAction(simpleModel.getParametersContent(), simpleModel.getModelFile().getName());
+        });
+        Button showStatisticsBtn = new Button("Statystyki");
+        showStatisticsBtn.setOnAction((ActionEvent event) -> {
+            showSimpleMatlabModelStatisticsAction(simpleModel);
+        });
+        Button convertToSbmlBtn = new Button("Konwertuj do SBML");
+        convertToSbmlBtn.setOnAction((ActionEvent event) -> {
+            convertSimpleMatlabToSbmlAction(simpleModel);
+        });
+
+        showModelContentBtn.getStyleClass().add("sub-menu-button");
+        showParametersContentBtn.getStyleClass().add("sub-menu-button");
+        showStatisticsBtn.getStyleClass().add("sub-menu-button");
+        convertToSbmlBtn.getStyleClass().add("sub-menu-button");
+        showModelContentBtn.setMinHeight(30.0);
+        showParametersContentBtn.setMinHeight(30.0);
+        showStatisticsBtn.setMinHeight(30.0);
+        convertToSbmlBtn.setMinHeight(30.0);
+
+        VBox innerBox = new VBox(showModelContentBtn, showParametersContentBtn, showStatisticsBtn, convertToSbmlBtn);
+        TitledPane modelPane = new TitledPane("Matlab: " + simpleModel.getModelFile().getName(), innerBox);
+        modelPane.setExpanded(Boolean.FALSE);
+        modelPane.getStyleClass().add("menu-titled-pane");
+        modelPane.setMaxWidth(Double.MAX_VALUE);
+        modelPane.setMinHeight(30.0);
+        modelPane.setMaxHeight(Double.MAX_VALUE);
+        VBox.setVgrow(modelPane, Priority.ALWAYS);
+        HBox.setHgrow(modelPane, Priority.ALWAYS);
+
+        showModelContentBtn.minWidthProperty().bind(modelPane.widthProperty());
+        showParametersContentBtn.minWidthProperty().bind(modelPane.widthProperty());
+        showStatisticsBtn.minWidthProperty().bind(modelPane.widthProperty());
+        convertToSbmlBtn.minWidthProperty().bind(modelPane.widthProperty());
+
+        return modelPane;
+    }
+
+    private void showSimpleMatlabModelStatisticsAction(SimpleMatlabData simpleModel) {
+
+    }
+
+    private void convertSimpleMatlabToSbmlAction(SimpleMatlabData simpleModel) {
+
+    }
+
+    private TitledPane prepareComplexMatlabModelSubMenu(ComplexMatlabData stochasticModel, ComplexMatlabData deterministicModel) {
+        Button showStochModelContentBtn = new Button("Model stochastyczny");
+        showStochModelContentBtn.setOnAction((ActionEvent event) -> {
+            showModelContentAction(stochasticModel.getModelContent(), stochasticModel.getModelFile().getName());
+        });
+        Button showDetermModelContentBtn = new Button("Model deterministyczny");
+        showDetermModelContentBtn.setOnAction((ActionEvent event) -> {
+            showModelContentAction(deterministicModel.getModelContent(), stochasticModel.getModelFile().getName());
+        });
+
+        Button showStochasticParamBtn = new Button("Parametry s.");
+        showStochasticParamBtn.setOnAction((ActionEvent) -> {
+            showModelContentAction(stochasticModel.getParametersContent(), stochasticModel.getModelFile().getName());
+        });
+        Button showDetermParamBtn = new Button("Parametry d.");
+        showDetermParamBtn.setOnAction((ActionEvent) -> {
+            showModelContentAction(deterministicModel.getParametersContent(), stochasticModel.getModelFile().getName());
+        });
+
+        Button showStochasticStatisticsBtn = new Button("Statystyki s.");
+        showStochasticStatisticsBtn.setOnAction((ActionEvent event) -> {
+            showComplexMatlabModelStatAction(stochasticModel);
+        });
+        Button showDeterministicStatisticsBtn = new Button("Statystyki d.");
+        showDeterministicStatisticsBtn.setOnAction((ActionEvent event) -> {
+            showComplexMatlabModelStatAction(deterministicModel);
+        });
+
+        Button convertToSbmlBtn = new Button("Konwertuj do SBML");
+        convertToSbmlBtn.setOnAction((ActionEvent event) -> {
+            convertComplexMatlabModelToSbmlAction(stochasticModel, deterministicModel);
+        });
+
+        showStochModelContentBtn.getStyleClass().add("sub-menu-button");
+        showDetermModelContentBtn.getStyleClass().add("sub-menu-button");
+        showStochasticParamBtn.getStyleClass().add("sub-menu-button");
+        showDetermParamBtn.getStyleClass().add("sub-menu-button");
+        showStochasticStatisticsBtn.getStyleClass().add("sub-menu-button");
+        showDeterministicStatisticsBtn.getStyleClass().add("sub-menu-button");
+        convertToSbmlBtn.getStyleClass().add("sub-menu-button");
+
+        showStochModelContentBtn.setMinHeight(30.0);
+        showDetermModelContentBtn.setMinHeight(30.0);
+        showStochasticParamBtn.setMinHeight(30.0);
+        showDetermParamBtn.setMinHeight(30.0);
+        showStochasticStatisticsBtn.setMinHeight(30.0);
+        showDeterministicStatisticsBtn.setMinHeight(30.0);
+        convertToSbmlBtn.setMinHeight(30.0);
+
+        VBox innerBox = new VBox(showStochModelContentBtn, showDetermModelContentBtn, showStochasticParamBtn, showDetermParamBtn, showStochasticStatisticsBtn, showDeterministicStatisticsBtn, convertToSbmlBtn);
+        TitledPane modelPane = new TitledPane("Matlab: " + stochasticModel.getModelFile().getName(), innerBox);
+        modelPane.setExpanded(Boolean.FALSE);
+        modelPane.getStyleClass().add("menu-titled-pane");
+        modelPane.setMaxWidth(Double.MAX_VALUE);
+        modelPane.setMinHeight(30.0);
+        modelPane.setMaxHeight(Double.MAX_VALUE);
+        VBox.setVgrow(modelPane, Priority.ALWAYS);
+        HBox.setHgrow(modelPane, Priority.ALWAYS);
+
+        showStochModelContentBtn.minWidthProperty().bind(modelPane.widthProperty());
+        showDetermModelContentBtn.minWidthProperty().bind(modelPane.widthProperty());
+        showStochasticParamBtn.minWidthProperty().bind(modelPane.widthProperty());
+        showDetermParamBtn.minWidthProperty().bind(modelPane.widthProperty());
+        showStochasticStatisticsBtn.minWidthProperty().bind(modelPane.widthProperty());
+        showDeterministicStatisticsBtn.minWidthProperty().bind(modelPane.widthProperty());
+        convertToSbmlBtn.minWidthProperty().bind(modelPane.widthProperty());
+
+        return modelPane;
+    }
+
+    private void showComplexMatlabModelStatAction(ComplexMatlabData complexModel) {
+
+    }
+
+    private void convertComplexMatlabModelToSbmlAction(ComplexMatlabData stochModel, ComplexMatlabData determModel) {
+
     }
 
     @FXML

@@ -9,6 +9,7 @@ import convertsbml.model.entities.matlab.EquationM;
 import convertsbml.model.entities.matlab.SimpleMatlabData;
 import convertsbml.model.enums.EComplexMatlabModelType;
 import convertsbml.model.enums.EComplexityMatlabModel;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.regex.Pattern;
  * @author Magda
  */
 public class MatlabReader extends AbstractReader {
-
+    
     private LoadMatlabFileDialogModel matlabData;
 
     /**
@@ -33,10 +34,10 @@ public class MatlabReader extends AbstractReader {
     private final String MODEL_PARAMETER = "^\\[.*";
     private final String MODEL_ZEROS = "zeros";
     private final String PARAMETER = "[A-Za-z]*=.*;";
-
+    
     private final String C_MODEL_FACTOR_EQUATION = "^[A-Z]{2,}.*";
     private final String C_MODEL_EQUATION = "dy\\([0-9]*\\)=.*";
-
+    
     private final String S_Y_EQUATION = "[A-Za-z]*=y.*";
     private final String S_EQUATION = "[A-Za-z0-9].*=[^0]{1}.*";
 
@@ -47,13 +48,13 @@ public class MatlabReader extends AbstractReader {
     private final Pattern MODEL_PARAMETER_PATTERN = Pattern.compile(MODEL_PARAMETER);
     private final Pattern MODEL_ZEROS_PATTERN = Pattern.compile(MODEL_ZEROS);
     private final Pattern PARAMETER_PATTERN = Pattern.compile(PARAMETER);
-
+    
     private final Pattern C_MODEL_FACTOR_EQUATION_PATTERN = Pattern.compile(C_MODEL_FACTOR_EQUATION);
     private final Pattern C_MODEL_EQUATION_PATTERN = Pattern.compile(C_MODEL_EQUATION);
-
+    
     private final Pattern S_Y_EQUATION_PATTERN = Pattern.compile(S_Y_EQUATION);
     private final Pattern S_EQUATION_PATTERN = Pattern.compile(S_EQUATION);
-
+    
     public MatlabReader(LoadMatlabFileDialogModel matlabData) {
         this.matlabData = matlabData;
     }
@@ -83,11 +84,14 @@ public class MatlabReader extends AbstractReader {
         try {
             List<String> simpleModelLines = readFileAsList(matlabData.getSimpleModelPath().get());
             List<String> simpleParametersLines = readFileAsList(matlabData.getSimpleParametersPath().get());
-
+            
             SimpleMatlabData simpleMatlabData = analyzeSimpleModel(simpleModelLines);
             List<ParameterMatlab> parameters = analyzeParameters(simpleParametersLines);
-
+            
             simpleMatlabData.setParameters(parameters);
+            simpleMatlabData.setModelContent(simpleModelLines);
+            simpleMatlabData.setParametersContent(simpleParametersLines);
+            simpleMatlabData.setModelFile(new File(matlabData.getSimpleModelPath().get()));
             matlabModel.setSimpleModel(simpleMatlabData);
         } catch (IOException ex) {
             Logger.getLogger(MatlabReader.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,7 +110,7 @@ public class MatlabReader extends AbstractReader {
         SimpleMatlabData simpleMatlabData = new SimpleMatlabData();
         List<EquationM> equations = new ArrayList<>();
         List<String> yEquations = new ArrayList<>();
-
+        
         for (String line : simpleModelLines) {
             //Wyszukiwanie elementu funkcji
             if (simpleMatlabData.getFunction() == null) {
@@ -162,14 +166,14 @@ public class MatlabReader extends AbstractReader {
         try {
             ComplexMatlabData deterministicModel = readDeterministicPart();
             ComplexMatlabData stochasticModel = readStochasticPart();
-
+            
             matlabModel.setDeterministicModel(deterministicModel);
             matlabModel.setStochasticModel(stochasticModel);
-
+            
         } catch (IOException ex) {
             Logger.getLogger(MatlabReader.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         return matlabModel;
     }
 
@@ -182,12 +186,15 @@ public class MatlabReader extends AbstractReader {
     private ComplexMatlabData readDeterministicPart() throws IOException {
         List<String> deterministicModelLines = readFileAsList(matlabData.getComplexDeterministicModelPath().get());
         List<String> deterministicParametersLines = readFileAsList(matlabData.getComplexDeterministicParametersPath().get());
-
+        
         ComplexMatlabData deterministicModel = analyzeComplexModel(deterministicModelLines);
         List<ParameterMatlab> parameters = analyzeParameters(deterministicParametersLines);
         deterministicModel.setParameters(parameters);
         deterministicModel.setModelType(EComplexMatlabModelType.DETERMINISTIC);
-
+        deterministicModel.setModelContent(deterministicModelLines);
+        deterministicModel.setParametersContent(deterministicParametersLines);
+        deterministicModel.setModelFile(new File(matlabData.getComplexDeterministicModelPath().get()));
+        
         return deterministicModel;
     }
 
@@ -200,12 +207,15 @@ public class MatlabReader extends AbstractReader {
     private ComplexMatlabData readStochasticPart() throws IOException {
         List<String> stochasticModelLines = readFileAsList(matlabData.getComplexStochasticModelPath().get());
         List<String> stochasticParametersLines = readFileAsList(matlabData.getComplexStochasticParametersPath().get());
-
+        
         ComplexMatlabData stochasticModel = analyzeComplexModel(stochasticModelLines);
         List<ParameterMatlab> parameters = analyzeParameters(stochasticParametersLines);
         stochasticModel.setParameters(parameters);
         stochasticModel.setModelType(EComplexMatlabModelType.STOCHASTIC);
-
+        stochasticModel.setModelContent(stochasticModelLines);
+        stochasticModel.setParametersContent(stochasticParametersLines);
+        stochasticModel.setModelFile(new File(matlabData.getComplexStochasticModelPath().get()));
+        
         return stochasticModel;
     }
 
@@ -280,5 +290,5 @@ public class MatlabReader extends AbstractReader {
         }
         return parameters;
     }
-
+    
 }

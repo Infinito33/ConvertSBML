@@ -8,18 +8,19 @@ import java.util.List;
 
 /**
  * Główny slvModels aplikacji zawierający dane, przynależny do
- {@link ApplicationController}.
+ * {@link ApplicationController}.
  *
  * @author Magda
  */
 public class ApplicationModel {
 
     private List<ModelSlv> slvModels;
-    private ModelMatlab matlabModel;
+    private List<ModelMatlab> matlabModel;
     private File slvModelFile;
 
     public ApplicationModel() {
         slvModels = new ArrayList<>();
+        matlabModel = new ArrayList<>();
     }
 
     public List<ModelSlv> getSlvModels() {
@@ -38,12 +39,12 @@ public class ApplicationModel {
         this.slvModelFile = slvModelFile;
     }
 
-    public ModelMatlab getMatlabModel() {
+    public List<ModelMatlab> getMatlabModel() {
         return matlabModel;
     }
 
-    public void setMatlabModel(ModelMatlab matlabModel) {
-        this.matlabModel = matlabModel;
+    public void addMatlabModel(ModelMatlab modelMatlab) {
+        matlabModel.add(modelMatlab);
     }
 
 }
