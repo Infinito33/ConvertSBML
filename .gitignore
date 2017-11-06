@@ -2,4 +2,6 @@
 /dist/
 /nbproject/private/
 /nbproject
+nbproject/
 nbproject
+nbproject/*
