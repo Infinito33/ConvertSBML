@@ -182,7 +182,7 @@ public class ApplicationView implements Initializable {
 
         Label modelNameLbl = (Label) content.getChildren().get(1);
         modelNameLbl.setText("SLV: " + modelName);
-        
+
         TextArea contentArea = (TextArea) content.getChildren().get(0);
         for (String line : modelContent) {
             contentArea.appendText(line + "\n");
@@ -207,7 +207,7 @@ public class ApplicationView implements Initializable {
 
     public void convertSlvToSbmlAction(ModelSlv modelSlv) {
         SBMLCreator sbmlCreator = new SBMLCreator();
-        sbmlCreator.createSBMLFile(modelSlv);
+        sbmlCreator.createSBMLFromSlv(modelSlv);
     }
 
     @FXML
@@ -220,11 +220,8 @@ public class ApplicationView implements Initializable {
             LoadMatlabFileDialogModel model = dialog.getController().getModel();
             MatlabReader reader = new MatlabReader(model);
 
-            if (model.getIsSimpleModel().get()) {
-                matlabModel = reader.readSimpleModel();
-            } else {
-                matlabModel = reader.readComplexModel();
-            }
+            matlabModel = reader.readModel(model.getIsSimpleModel().get());
+
         }
         if (matlabModel != null) {
             appModel.addMatlabModel(matlabModel);
@@ -301,7 +298,8 @@ public class ApplicationView implements Initializable {
     }
 
     private void convertSimpleMatlabToSbmlAction(SimpleMatlabData simpleModel) {
-
+        SBMLCreator sbmlCreator = new SBMLCreator();
+        sbmlCreator.createSBMLFromSimpleMatlab(simpleModel);
     }
 
     private TitledPane prepareComplexMatlabModelSubMenu(ComplexMatlabData stochasticModel, ComplexMatlabData deterministicModel) {
@@ -379,7 +377,8 @@ public class ApplicationView implements Initializable {
     }
 
     private void convertComplexMatlabModelToSbmlAction(ComplexMatlabData stochModel, ComplexMatlabData determModel) {
-
+        SBMLCreator sbmlCreator = new SBMLCreator();
+        sbmlCreator.createSBMLFromComplexMatlab(stochModel, determModel);
     }
 
     @FXML

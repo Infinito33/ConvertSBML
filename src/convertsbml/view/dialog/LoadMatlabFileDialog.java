@@ -121,50 +121,52 @@ public class LoadMatlabFileDialog implements Initializable {
 
     @FXML
     public void chooseSimpleModelPathAction() {
-        //String modelPath = loadFile("Wybierz ścieżkę modelu prostego", MATLAB_EXT);
-        //String modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
-        String modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
-        simpleModelPath.setText(modelPath);
+        //File modelPath = loadFile("Wybierz ścieżkę modelu prostego", MATLAB_EXT);
+        File modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
+        simpleModelPath.setText(modelPath.getAbsolutePath());
+        model.setName(modelPath.getName());
     }
 
     @FXML
     public void chooseSimpleParameterPathAction() {
-        //String parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT);
-        //String parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
-        String parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
-        simpleParametersPath.setText(parametersPath);
+        //File parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT);
+        File parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
+        simpleParametersPath.setText(parametersPath.getAbsolutePath());
     }
 
     @FXML
     public void chooseComplexDeterministicModelPathAction() {
-        //String modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT);
-        //String modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
-        String modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
-        complexDeterministicModelPath.setText(modelPath);
+        //File modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT);
+        //File modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        File modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
+        complexDeterministicModelPath.setText(modelPath.getAbsolutePath());
+        model.setName(modelPath.getName());
     }
 
     @FXML
     public void chooseComplexDeterministicParametersPathAction() {
-        //String parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT);
-        //String parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
-        String parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
-        complexDeterministicParametersPath.setText(parametersPath);
+        //File parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT);
+        //File parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        File parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
+        complexDeterministicParametersPath.setText(parametersPath.getAbsolutePath());
     }
 
     @FXML
     public void chooseComplexStochasticModelPathAction() {
-        //String modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT);
-        //String modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
-        String modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
-        complexStochasticModelPath.setText(modelPath);
+        //File modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT);
+        //File modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        File modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
+        complexStochasticModelPath.setText(modelPath.getAbsolutePath());
     }
 
     @FXML
     public void chooseComplexStochasticParametersPathAction() {
-        //String parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT);
-        //String parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\Projekt\\Modele Matlab");
-        String parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
-        complexStochasticParametersPath.setText(parametersPath);
+        //File parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT);
+        //File parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        File parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
+        complexStochasticParametersPath.setText(parametersPath.getAbsolutePath());
     }
 
     /**
@@ -174,35 +176,23 @@ public class LoadMatlabFileDialog implements Initializable {
      * @param extension Możliwe do wyboru rozszerzenia.
      * @return Ścieżka do wybranego pliku.
      */
-    public String loadFile(String title, String extension) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle(title);
-
-        ExtensionFilter filter = new ExtensionFilter("Matlab file", extension);
-        fileChooser.getExtensionFilters().add(filter);
-
-        File resultFile = fileChooser.showOpenDialog(dialog.getOwner());
-        String path = Const.EMPTY;
-        if (resultFile != null) {
-            path = resultFile.getAbsolutePath();
-        }
-        return path;
+    public File loadFile(String title, String extension) {
+        return loadFile(title, extension, "");
     }
 
-    public String loadFile(String title, String extension, String initialPath) {
+    public File loadFile(String title, String extension, String initialPath) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(title);
-        fileChooser.setInitialDirectory(new File(initialPath));
+        if (!initialPath.equals("")) {
+            fileChooser.setInitialDirectory(new File(initialPath));
+        }
 
         ExtensionFilter filter = new ExtensionFilter("Matlab file", extension);
         fileChooser.getExtensionFilters().add(filter);
 
         File resultFile = fileChooser.showOpenDialog(dialog.getOwner());
-        String path = Const.EMPTY;
-        if (resultFile != null) {
-            path = resultFile.getAbsolutePath();
-        }
-        return path;
+
+        return resultFile;
     }
 
     @FXML

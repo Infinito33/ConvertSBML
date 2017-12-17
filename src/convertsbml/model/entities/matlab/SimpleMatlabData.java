@@ -10,17 +10,17 @@ import java.util.List;
  */
 public class SimpleMatlabData extends AbstractMatlabModel {
 
-    private List<String> yEquations;
+    private List<EquationM> yEquations;
 
     public SimpleMatlabData() {
         yEquations = new ArrayList<>();
     }
 
-    public List<String> getyEquations() {
+    public List<EquationM> getyEquations() {
         return yEquations;
     }
 
-    public void setyEquations(List<String> yEquations) {
+    public void setyEquations(List<EquationM> yEquations) {
         this.yEquations = yEquations;
     }
 

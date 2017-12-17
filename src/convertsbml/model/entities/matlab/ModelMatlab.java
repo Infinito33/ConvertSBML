@@ -9,6 +9,8 @@ import convertsbml.model.enums.EComplexityMatlabModel;
  */
 public class ModelMatlab {
 
+    private String name;
+    
     private SimpleMatlabData simpleModel;
 
     private ComplexMatlabData deterministicModel;
@@ -46,6 +48,14 @@ public class ModelMatlab {
 
     public void setGeneralType(EComplexityMatlabModel generalType) {
         this.generalType = generalType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

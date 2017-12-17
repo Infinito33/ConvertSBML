@@ -2,7 +2,9 @@ package convertsbml.model.entities.matlab;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Abstrakcyjny model danych dla modeli matlab.
@@ -12,6 +14,7 @@ import java.util.List;
 public abstract class AbstractMatlabModel {
 
     private String function;
+    private Set<String> functionVariables;
     private String params;
     private String zeros;
     private List<EquationM> equations;
@@ -26,6 +29,7 @@ public abstract class AbstractMatlabModel {
         parameters = new ArrayList<>();
         modelContent = new ArrayList<>();
         parametersContent = new ArrayList<>();
+        functionVariables = new HashSet<>();
     }
 
     public String getFunction() {
@@ -98,6 +102,14 @@ public abstract class AbstractMatlabModel {
 
     public void setParametersContent(List<String> parametersContent) {
         this.parametersContent = parametersContent;
+    }
+
+    public Set<String> getFunctionVariables() {
+        return functionVariables;
+    }
+
+    public void setFunctionVariables(Set<String> functionVariables) {
+        this.functionVariables = functionVariables;
     }
 
 }

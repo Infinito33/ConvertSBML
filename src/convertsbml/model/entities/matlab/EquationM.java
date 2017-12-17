@@ -14,6 +14,13 @@ public class EquationM {
     public EquationM(String full) {
         this.full = full;
     }
+    
+    public EquationM(String full, String leftSide, String rightSide, String comment) {
+        this.full = full;
+        this.leftSide = leftSide;
+        this.rightSide = rightSide;
+        this.comment = comment;
+    }
 
     public String getFull() {
         return full;

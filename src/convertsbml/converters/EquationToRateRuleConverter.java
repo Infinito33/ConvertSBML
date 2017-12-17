@@ -1,5 +1,6 @@
 package convertsbml.converters;
 
+import convertsbml.model.entities.matlab.EquationM;
 import convertsbml.model.entities.slv.EquationSlv;
 import org.sbml.libsbml.ASTNode;
 import org.sbml.libsbml.RateRule;
@@ -32,7 +33,7 @@ public class EquationToRateRuleConverter {
     /**
      * Funkcja konwertująca równanie do reguły.
      *
-     * @param equationSlv równanie wejściowe.
+     * @param equationSlv równanie wejściowe - slv.
      * @param rateRule reguła wyjściowa.
      */
     public void convertToRateRuleFrom(EquationSlv equationSlv, RateRule rateRule) {
@@ -45,6 +46,32 @@ public class EquationToRateRuleConverter {
 
         //Przetworzenie równania na drzewo z node'ami, które można bezpośrednio wstawić do SBML.
         ASTNode node = libsbml.parseFormula(replacedRight);
+        rateRule.setMath(node);
+
+        updateMetaId();
+    }
+
+    /**
+     * Funkcja konwertująca równanie do reguły.
+     *
+     * @param equationM równanie wejściowe - matlab.
+     * @param rateRule reguła wyjściowa.
+     */
+    public void convertToRateRuleFrom(EquationM equationM, RateRule rateRule) {
+//        String rightSide = equationM.getRightSide();
+//        if (equationM.getRightSide().contains("sign")) {
+//            rightSide = equationM.getRightSide().replace("sign", "");
+//        }
+        
+        rateRule.setMetaId(metaid);
+        String variable = equationM.getLeftSide();
+        if(equationM.getLeftSide().startsWith("dy")) {
+            variable = equationM.getLeftSide().substring(1).replace("(", "").replace(")", "");
+        }
+        rateRule.setVariable(variable);
+
+        //Przetworzenie równania na drzewo z node'ami, które można bezpośrednio wstawić do SBML.
+        ASTNode node = libsbml.parseFormula(equationM.getRightSide());
         rateRule.setMath(node);
 
         updateMetaId();

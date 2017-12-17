@@ -22,6 +22,7 @@ public class LoadMatlabFileDialogModel {
     private StringProperty complexDeterministicParametersPath;
     private StringProperty complexStochasticModelPath;
     private StringProperty complexStochasticParametersPath;
+    private String name;
 
     /**
      * Domyślny konstruktor inicjalizujący pola.
@@ -99,6 +100,14 @@ public class LoadMatlabFileDialogModel {
 
     public void setComplexStochasticParametersPath(String complexStochasticParametersPath) {
         this.complexStochasticParametersPath.setValue(complexStochasticParametersPath);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 }
