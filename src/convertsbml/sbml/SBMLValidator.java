@@ -11,7 +11,19 @@ import org.sbml.libsbml.SBMLError;
  */
 public class SBMLValidator {
 
-    public static boolean validateExampleSBML(SBMLDocument sbmlDoc) {
+    private String consistencyErrors;
+    private String validationErrors;
+
+    /**
+     * Walidacja dokumentu SBML.
+     *
+     * @param sbmlDoc dokument SBML.
+     * @return True, jesli walidacja jest poprawna, w innym przypadku false.F
+     */
+    public boolean validateExampleSBML(SBMLDocument sbmlDoc) {
+        consistencyErrors = "";
+        validationErrors = "";
+
         if (sbmlDoc == null) {
             System.err.println("validateExampleSBML: given a null SBML Document");
             return false;
@@ -70,10 +82,11 @@ public class SBMLValidator {
             return true;
         } else {
             if (numConsistencyErrors > 0) {
-                System.out.println("ERROR: encountered " + numConsistencyErrors
+                consistencyErrors = "ERROR: encountered " + numConsistencyErrors
                         + " consistency error"
                         + (numConsistencyErrors == 1 ? "" : "s")
-                        + " in model '" + sbmlDoc.getModel().getId() + "'.");
+                        + " in model '" + sbmlDoc.getModel().getId() + "'.";
+                System.out.println(consistencyErrors);
             }
             if (numConsistencyWarnings > 0) {
                 System.out.println("Notice: encountered "
@@ -85,10 +98,11 @@ public class SBMLValidator {
             System.out.println(consistencyMessages);
 
             if (numValidationErrors > 0) {
-                System.out.println("ERROR: encountered " + numValidationErrors
+                validationErrors = "ERROR: encountered " + numValidationErrors
                         + " validation error"
                         + (numValidationErrors == 1 ? "" : "s") + " in model '"
-                        + sbmlDoc.getModel().getId() + "'.");
+                        + sbmlDoc.getModel().getId() + "'.";
+                System.out.println(validationErrors);
             }
             if (numValidationWarnings > 0) {
                 System.out.println("Notice: encountered "
@@ -101,6 +115,14 @@ public class SBMLValidator {
 
             return (numConsistencyErrors == 0 && numValidationErrors == 0);
         }
+    }
+
+    public String getConsistencyErrors() {
+        return consistencyErrors;
+    }
+
+    public String getValidationErrors() {
+        return validationErrors;
     }
 
 }

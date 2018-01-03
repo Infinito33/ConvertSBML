@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -40,12 +41,17 @@ public class ApplicationController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/convertsbml/view/fxml/ApplicationView.fxml"));
             root = loader.load();
             scene = new Scene(root);
+            //Dodanie stylów do sceny, tak aby wszystkie elementy z nich korzystały
             scene.getStylesheets().add(getClass().getResource("/convertsbml/view/css/styles.css").toExternalForm());
+            //Ustawienie sceny na ekran i tytułu
             stage.setScene(scene);
             stage.setTitle("Convert SBML");
+            //Pobranie i ustawienie widoku
             view = loader.getController();
             view.setController(this);
             view.postInitialize();
+
+            stage.getIcons().add(new Image(getClass().getResource("/icons/icon.png").toString()));
         } catch (IOException ex) {
             Logger.getLogger(ApplicationController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -58,10 +64,20 @@ public class ApplicationController {
         stage.show();
     }
 
+    /**
+     * Pobranie modelu.
+     *
+     * @return model.
+     */
     public ApplicationModel getModel() {
         return model;
     }
 
+    /**
+     * Pobranie widoku.
+     *
+     * @return widok
+     */
     public ApplicationView getView() {
         return view;
     }

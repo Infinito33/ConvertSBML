@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * Klasa abstrakcyjna, którą rozszerzają kolejne klasy odczytujące specyficzne
+ * modele.
  *
  * @author Magda
  */
@@ -22,7 +24,7 @@ public abstract class AbstractReader {
      * pliku.
      */
     public List<String> readFileAsList(String path) throws IOException {
-        if(path == null || path.isEmpty()) {
+        if (path == null || path.isEmpty()) {
             return Collections.EMPTY_LIST;
         }
         List<String> lines = new ArrayList<>();

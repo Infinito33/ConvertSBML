@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convertsbml.basic;
 
 import java.io.IOException;
@@ -12,19 +7,34 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
 /**
+ * Klasa odpowiedzialna za odczyt elementów związanych z JavaFX.
  *
- * @author tomasz.huchro
+ * @author Magda
  */
 public class FXResourceManager {
 
-    public Node loadFxml(String absolutePath) {
+    private Object controller;
+
+    /**
+     * Załadowanie pliku *.fxml do obiektu, tak aby można było go wyświetlić.
+     *
+     * @param absolutePath ścieżka absolutna do pliku.
+     * @return obiekt z widokiem.
+     */
+    public Node loadFxml(final String absolutePath) {
         try {
-            Node node = FXMLLoader.load(getClass().getResource(absolutePath));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutePath));
+            Node node = loader.load();
+            controller = loader.getController();
             return node;
         } catch (IOException ex) {
             Logger.getLogger(FXResourceManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public Object getController() {
+        return controller;
     }
 
 }

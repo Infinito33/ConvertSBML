@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 /**
+ * Klasa odpowiedzialna za widok związany z przedstawieniem statystyk związanych
+ * z modelem Solvary.
  *
  * @author Magda
  */
@@ -32,11 +34,22 @@ public class StatisticsSlvView implements Initializable {
 
     private ModelSlv modelSlv;
 
+    /**
+     * Metoda pochodząca z interfejsu {@link Initializable}. Wymagana lecz
+     * nieużywana.
+     *
+     * @param url ścieżka widoku.
+     * @param rb bundle.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
     }
 
+    /**
+     * Inicjalizacja dodatkowa, która odbywa się po utworzeniu i wyświetleniu
+     * elementów na ekranie.
+     */
     public void postInitialize() {
         modelPathLbl.setText(modelSlv.getSlvFile().getAbsolutePath());
         modelNameLbl.setText(modelSlv.getName());
@@ -48,10 +61,18 @@ public class StatisticsSlvView implements Initializable {
         rulesAmountLbl.setText("" + rulesSize);
     }
 
+    /**
+     * Ustawia model danych.
+     *
+     * @param modelSlv model slv.
+     */
     public void setData(ModelSlv modelSlv) {
         this.modelSlv = modelSlv;
     }
 
+    /**
+     * Akcja do pokazania równań modelu.
+     */
     @FXML
     private void showEquationsAction() {
         statisticsArea.setText("");
@@ -60,6 +81,9 @@ public class StatisticsSlvView implements Initializable {
         }
     }
 
+    /**
+     * Akcja do pokazania parametrów modelu.
+     */
     @FXML
     private void showParametersAction() {
         statisticsArea.setText("");

@@ -58,18 +58,31 @@ public class MatlabReader extends AbstractReader {
     private final Pattern S_Y_EQUATION_PATTERN = Pattern.compile(S_Y_EQUATION);
     private final Pattern S_EQUATION_PATTERN = Pattern.compile(S_EQUATION);
 
+    public MatlabReader() {
+        this.extractor = new MatlabContentExtractor();
+    }
+
     public MatlabReader(LoadMatlabFileDialogModel matlabData) {
         this.matlabData = matlabData;
         this.extractor = new MatlabContentExtractor();
     }
 
     /**
+     * Ustawienie modelu z dialogu do wykorzystania w przetwarzaniu.
+     *
+     * @param matlabData model z danymi z dialogu.
+     */
+    public void setModel(LoadMatlabFileDialogModel matlabData) {
+        this.matlabData = matlabData;
+    }
+
+    /**
      * Ogólny odczyt modelu.
      *
-     * @param isSimpleModel czy jest to model prosty.
-     * @return
+     * @return gotowy model matlab ze wszystkimi danymi.
      */
-    public ModelMatlab readModel(Boolean isSimpleModel) {
+    public ModelMatlab readModel() {
+        Boolean isSimpleModel = matlabData.getIsSimpleModel().get();
         if (isSimpleModel) {
             return readSimpleModel();
         } else {
@@ -86,9 +99,11 @@ public class MatlabReader extends AbstractReader {
         ModelMatlab matlabModel = new ModelMatlab();
         matlabModel.setGeneralType(EComplexityMatlabModel.SIMPLE);
         try {
+            //Odczyt pliku z modelem i parametrami jako lista linii.
             List<String> simpleModelLines = readFileAsList(matlabData.getSimpleModelPath().get());
             List<String> simpleParametersLines = readFileAsList(matlabData.getSimpleParametersPath().get());
 
+            //Analiza prostego modelu i parametrów i przypisanie danych
             SimpleMatlabData simpleMatlabData = analyzeSimpleModel(simpleModelLines);
             List<ParameterMatlab> parameters = analyzeParameters(simpleParametersLines);
 
@@ -108,7 +123,6 @@ public class MatlabReader extends AbstractReader {
      *
      * @param simpleModelLines plik modelu w postaci linii.
      * @return dane modelu.
-     * @throws java.io.IOException
      */
     public SimpleMatlabData analyzeSimpleModel(List<String> simpleModelLines) throws IOException {
         SimpleMatlabData simpleMatlabData = new SimpleMatlabData();
@@ -171,12 +185,13 @@ public class MatlabReader extends AbstractReader {
         matlabModel.setGeneralType(EComplexityMatlabModel.COMPLEX);
 
         try {
+            //Odczyt obu złożonych modeli.
             ComplexMatlabData deterministicModel = readDeterministicPart();
             ComplexMatlabData stochasticModel = readStochasticPart();
 
+            //Ustawienie ich w głównym modelu.
             matlabModel.setDeterministicModel(deterministicModel);
             matlabModel.setStochasticModel(stochasticModel);
-
         } catch (IOException ex) {
             Logger.getLogger(MatlabReader.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -191,11 +206,12 @@ public class MatlabReader extends AbstractReader {
      * @throws IOException
      */
     private ComplexMatlabData readDeterministicPart() throws IOException {
+        //Odczyt modelu deterministycznego i parametrów jako linii.
         List<String> deterministicModelLines = readFileAsList(matlabData.getComplexDeterministicModelPath().get());
         List<String> deterministicParametersLines = readFileAsList(matlabData.getComplexDeterministicParametersPath().get());
 
+        //Wyciągnięcie danych z modelu i utworzenie obiektu modelu z danymi.
         ComplexMatlabData deterministicModel = analyzeComplexModel(deterministicModelLines);
-        extractor.resetVariableNumber();
         List<ParameterMatlab> parameters = analyzeParameters(deterministicParametersLines);
         deterministicModel.setParameters(parameters);
         deterministicModel.setModelType(EComplexMatlabModelType.DETERMINISTIC);
@@ -217,7 +233,6 @@ public class MatlabReader extends AbstractReader {
         List<String> stochasticParametersLines = readFileAsList(matlabData.getComplexStochasticParametersPath().get());
 
         ComplexMatlabData stochasticModel = analyzeComplexModel(stochasticModelLines);
-        extractor.resetVariableNumber();
         List<ParameterMatlab> parameters = analyzeParameters(stochasticParametersLines);
         stochasticModel.setParameters(parameters);
         stochasticModel.setModelType(EComplexMatlabModelType.STOCHASTIC);
@@ -298,6 +313,7 @@ public class MatlabReader extends AbstractReader {
         List<ParameterMatlab> parameters = new ArrayList<>();
         for (String paramLine : parametersLines) {
             String line = paramLine.trim();
+            //Szukanie parametru, jeśli znaleziono to wydobywanie go z konkretnej linii.
             boolean isParamFound = PARAMETER_PATTERN.matcher(line).find() && !line.startsWith("%") && !line.startsWith("function");
             if (isParamFound) {
                 ParameterMatlab param = extractor.extractParameterFrom(line);

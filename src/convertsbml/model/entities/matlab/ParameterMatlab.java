@@ -1,7 +1,6 @@
 package convertsbml.model.entities.matlab;
 
 /**
- *
  * Klasa reprezentuje pojedynczy parameter, który występuje w równaniach modelu
  * Matlab.
  *

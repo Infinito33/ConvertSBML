@@ -10,6 +10,13 @@ import org.sbml.libsbml.libsbml;
  */
 public class SBMLIO {
 
+    /**
+     * Odpowiada za zapis dokumentu wygenerowanego w trakcie konwersji do pliku.
+     *
+     * @param sbmlDoc dokument SBML.
+     * @param filename nazwa dokumentu.
+     * @return True jeśli zapis się powiódł, w innym przypadku false.
+     */
     public static boolean writeExampleSBML(SBMLDocument sbmlDoc, String filename) {
         int result = libsbml.writeSBML(sbmlDoc, filename);
 

@@ -10,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.GridPane;
 
 /**
+ * Kontroler dla dialogu, który służy do wczytywanie plików związanych z modelem
+ * Matlab.
  *
  * @author Magda
  */
@@ -31,13 +33,16 @@ public class LoadMatlabFileDialogController {
         return view;
     }
 
+    /**
+     * Inicjalizacja modelu, załadowanie jego widoku oraz ustawienie kontrolera.
+     */
     private void init() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/convertsbml/view/dialog/fxml/LoadMatlabFileDialog.fxml"));
             GridPane pane = (GridPane) loader.load();
             view = loader.getController();
             view.setController(this);
-            view.postInitialize(pane);            
+            view.postInitialize(pane);
         } catch (IOException ex) {
             Logger.getLogger(ApplicationView.class.getName()).log(Level.SEVERE, null, ex);
         }

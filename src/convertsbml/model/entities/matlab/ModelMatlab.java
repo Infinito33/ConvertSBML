@@ -10,12 +10,12 @@ import convertsbml.model.enums.EComplexityMatlabModel;
 public class ModelMatlab {
 
     private String name;
-    
+
     private SimpleMatlabData simpleModel;
 
     private ComplexMatlabData deterministicModel;
     private ComplexMatlabData stochasticModel;
-    
+
     private EComplexityMatlabModel generalType;
 
     public ComplexMatlabData getDeterministicModel() {

@@ -1,6 +1,7 @@
 package convertsbml.model.entities.matlab;
 
 /**
+ * Równanie Matlab.
  *
  * @author Magda
  */
@@ -14,7 +15,7 @@ public class EquationM {
     public EquationM(String full) {
         this.full = full;
     }
-    
+
     public EquationM(String full, String leftSide, String rightSide, String comment) {
         this.full = full;
         this.leftSide = leftSide;

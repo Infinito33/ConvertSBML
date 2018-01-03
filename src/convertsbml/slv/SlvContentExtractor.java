@@ -1,6 +1,6 @@
 package convertsbml.slv;
 
-import convertsbml.converters.NumberWithENotationConverter;
+import convertsbml.converters.StringToNumberConverter;
 import convertsbml.model.entities.slv.EquationSlv;
 import convertsbml.model.entities.slv.ParameterSlv;
 import convertsbml.model.entities.slv.RuleSlv;
@@ -25,11 +25,14 @@ public class SlvContentExtractor {
      * @return lista {@link EquationSlv}.
      */
     public List<EquationSlv> extractEquationsFrom(String value) {
+        //Podziel tekst co znak nowej linii.
         String[] eqs = value.split("\\n");
         List<EquationSlv> equations = new ArrayList<>();
         for (String e : eqs) {
+            //Podziel równanie względem znaku '='.
             String[] sides = e.split("=");
 
+            //Utwórz nowe równanie - sides[0] : nazwa zmiennej, sides[1] : wartość równania
             EquationSlv eq = new EquationSlv(e, sides[0], sides[1]);
             equations.add(eq);
         }
@@ -47,13 +50,15 @@ public class SlvContentExtractor {
         for (int j = 0; j < parameters.getLength(); j++) {
             Node param = parameters.item(j);
             if (param.getNodeType() == Node.ELEMENT_NODE) {
+                //Pobranie atrybutów gałęzi z parametrem
                 NamedNodeMap attributes = param.getAttributes();
 
+                //Pobranie kolejnych danych związanych z parametrem i utworzenie samego obiektu parametru.
                 Node vTypeNode = attributes.getNamedItem("vType");
                 String vTypeVal = vTypeNode.getTextContent();
 
                 Node valueNode = attributes.getNamedItem("Value");
-                Double valueVal = NumberWithENotationConverter.fromString(valueNode.getTextContent());
+                Double valueVal = StringToNumberConverter.slvStringToNumber(valueNode.getTextContent());
 
                 Node descNode = attributes.getNamedItem("Desc");
                 String descVal = descNode.getTextContent();
@@ -76,8 +81,10 @@ public class SlvContentExtractor {
         for (int j = 0; j < list.getLength(); j++) {
             Node param = list.item(j);
             if (param.getNodeType() == Node.ELEMENT_NODE) {
+                //Pobranie atrybutów gałęzi z regułą
                 NamedNodeMap attributes = param.getAttributes();
 
+                //Pobranie kolejnych danych związanych z regułą i utworzenie samego obiektu reguły.
                 Node nameNode = attributes.getNamedItem("Name");
                 String nameVal = nameNode.getTextContent();
 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="convertsbml.view.StatisticsMatlabView">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label fx:id="modelTypeLbl" text="Rodzaj modelu">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></Label>
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
+            <children>
+                <CheckBox fx:id="stochasticModelCheck" mnemonicParsing="false" onAction="#updateSelectionStatus" text="stochastyczny" />
+                <CheckBox fx:id="deterministicModelCheck" mnemonicParsing="false" onAction="#updateSelectionStatus" text="deterministyczny" />
+            </children>
+        </HBox>
+        <Label text="Nazwa modelu" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></Label>
+        <Label fx:id="modelNameLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="Ilość równań" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></Label>
+        <Label fx:id="equationsAmountLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Ilość parametrów" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></Label>
+        <Label fx:id="parametersAmountLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextArea fx:id="statisticsArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="6" />
+        <Label text="Ścieżka pliku" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin></Label>
+        <Label fx:id="modelPathLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button fx:id="showEquationsBtn" maxWidth="105.0" minWidth="105.0" mnemonicParsing="false" onAction="#showEquationsAction" prefWidth="105.0" text="Pokaż równania" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin></Button>
+        <Button fx:id="showParametersBtn" maxWidth="105.0" minWidth="105.0" mnemonicParsing="false" onAction="#showParametersAction" prefWidth="105.0" text="Pokaż parametry" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets right="5.0" />
+         </GridPane.margin></Button>
+    </children>
+</GridPane>

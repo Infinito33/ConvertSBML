@@ -1,6 +1,8 @@
 package convertsbml.sbml;
 
+import convertsbml.Const;
 import convertsbml.converters.EquationToRateRuleConverter;
+import convertsbml.converters.StringToNumberConverter;
 import convertsbml.model.entities.matlab.ComplexMatlabData;
 import convertsbml.model.entities.matlab.EquationM;
 import convertsbml.model.entities.matlab.ParameterMatlab;
@@ -8,15 +10,23 @@ import convertsbml.model.entities.matlab.SimpleMatlabData;
 import convertsbml.model.entities.slv.EquationSlv;
 import convertsbml.model.entities.slv.ModelSlv;
 import convertsbml.model.entities.slv.ParameterSlv;
+import javafx.scene.control.Alert;
+import org.sbml.libsbml.ASTNode;
 import org.sbml.libsbml.Compartment;
+import org.sbml.libsbml.FunctionDefinition;
+import org.sbml.libsbml.InitialAssignment;
 import org.sbml.libsbml.Model;
 import org.sbml.libsbml.Parameter;
 import org.sbml.libsbml.RateRule;
 import org.sbml.libsbml.SBMLDocument;
 import org.sbml.libsbml.Species;
+import org.sbml.libsbml.libsbml;
 
 /**
  * Klasa odpowiedzialna za tworzenie pliku SBML.
+ *
+ * http://sbml.org/Software/libSBML/Tutorials - Tak wygladaja przyklady
+ * parametru, przypisania, rate rules itd.
  *
  * @author Magda
  */
@@ -25,15 +35,30 @@ public class SBMLCreator {
     private final int level = 2;
     private final int version = 4;
 
+    private SBMLValidator validator;
+
     private SBMLDocument document;
     private Model docModel;
     private EquationToRateRuleConverter conv;
+    private StringToNumberConverter sToNConv;
+
+    private Alert messageDialog;
+    private Alert errorDialog;
 
     /**
      * Konstruktor, który wykonuje inicjalizację.
      */
     public SBMLCreator() {
         initialize();
+        validator = new SBMLValidator();
+
+        messageDialog = new Alert(Alert.AlertType.INFORMATION);
+        messageDialog.setTitle("Zapis SBML");
+        messageDialog.setHeaderText(null);
+
+        errorDialog = new Alert(Alert.AlertType.ERROR);
+        errorDialog.setTitle("Błąd zapisu SBML");
+        errorDialog.setHeaderText(null);
     }
 
     /**
@@ -43,6 +68,48 @@ public class SBMLCreator {
         document = new SBMLDocument(level, version);
         docModel = document.createModel();
         conv = new EquationToRateRuleConverter();
+        sToNConv = new StringToNumberConverter();
+
+        addFunctionDefinitions();
+    }
+
+    /**
+     * Dodaje dodatkowe definicje funkcji do modelu SBML. Na chwilę obecną
+     * wymaga tego tylko jedna funkcja - sign.
+     */
+    private void addFunctionDefinitions() {
+        //Utworzenie definicji funkcji sign
+        FunctionDefinition func = docModel.createFunctionDefinition();
+        func.setName("sign");
+        func.setId("sign");
+
+        //Utworzenie schematu funkcji sign w MathML
+        String mathXML = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">"
+                + "          <lambda>"
+                + "            <bvar>"
+                + "              <ci> x </ci>"
+                + "            </bvar>"
+                + "            <piecewise>"
+                + "              <piece>"
+                + "                <cn type=\"integer\"> -1 </cn>"
+                + "                <apply>"
+                + "                  <lt/>"
+                + "                  <ci> x </ci>"
+                + "                  <cn type=\"integer\"> 0 </cn>"
+                + "                </apply>"
+                + "              </piece>"
+                + "              <otherwise>"
+                + "                <cn type=\"integer\"> 1 </cn>"
+                + "              </otherwise>"
+                + "            </piecewise>"
+                + "          </lambda>"
+                + "        </math>";
+
+        //Konwersja schematu funkcji do gałęzi dodawanej do definicji funkcji.
+        ASTNode astMath = libsbml.readMathMLFromString(mathXML);
+        func.setMath(astMath);
+
+        docModel.addFunctionDefinition(func);
     }
 
     /**
@@ -61,15 +128,23 @@ public class SBMLCreator {
         //Zapisanie gatunków do modelu SBML.
         Compartment compartment = docModel.createCompartment();
         compartment.setId(modelSlv.getName() + "Comp");
-        modelSlv.getParameters().forEach(param -> writeSlvSpeciesWithCompartment(compartment.getId(), param));
+        modelSlv.getParameters().forEach(param -> writeSlvSpeciesWithCompartment(modelSlv.getName() + "Comp", param));
 
         //Walidacja dokumentu SBML
-        boolean isValidated = SBMLValidator.validateExampleSBML(document);
-        System.out.println("Document is: " + isValidated);
+        boolean isValidated = validator.validateExampleSBML(document);
 
         //Zapis dokumentu SBML
         if (isValidated) {
-            SBMLIO.writeExampleSBML(document, "testSBML.xml");
+            boolean result = SBMLIO.writeExampleSBML(document, modelSlv.getName() + ".xml");
+            String message = Const.EMPTY;
+            if (result) {
+                message = "Zapis modelu " + modelSlv.getName() + " do formatu SBML powiódł się.";
+            } else {
+                message = "Zapis modelu " + modelSlv.getName() + " do formatu SBML nie powiódł się.";
+            }
+            showResultingDialog(message);
+        } else {
+            showErrorDialog("Błędy spójności: " + validator.getConsistencyErrors() + "\n" + "Błędy walidacji: " + validator.getValidationErrors());
         }
     }
 
@@ -79,10 +154,10 @@ public class SBMLCreator {
      * @param parameterSlv parametr, który ostanie dodany.
      */
     public void writeSlvParameter(ParameterSlv parameterSlv) {
-        Parameter para = docModel.createParameter();
-        para.setId(parameterSlv.getName());
-        para.setValue(parameterSlv.getValue());
-        para.setConstant(Boolean.FALSE);
+        Parameter param = docModel.createParameter();
+        param.setId(parameterSlv.getName());
+        param.setValue(parameterSlv.getValue());
+        param.setConstant(Boolean.FALSE);
     }
 
     /**
@@ -115,16 +190,17 @@ public class SBMLCreator {
      * @param simpleModel model prosty Matlab
      */
     public void createSBMLFromSimpleMatlab(SimpleMatlabData simpleModel) {
-        String id = simpleModel.getModelFile().getName().substring(0, simpleModel.getModelFile().getName().length() - 2);
-        docModel.setId(id);
+        String name = simpleModel.getModelFile().getName().substring(0, simpleModel.getModelFile().getName().length() - 2);
+        docModel.setId(name);
 
         //Zapisanie parametrów modelu
         simpleModel.getParameters().forEach(param -> writeMParameter(param));
         //Zapisanie równań jako reguły
         simpleModel.getEquations().forEach(eq -> writeMRateRule(eq));
 
+        //Utworzenie nazwy przedziału
         Compartment compartment = docModel.createCompartment();
-        compartment.setId(id + "Comp");
+        compartment.setId(name + "Comp");
 
         //Dodanie gatunków
         simpleModel.getyEquations().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param));
@@ -132,13 +208,20 @@ public class SBMLCreator {
         simpleModel.getFunctionVariables().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param));
 
         //Walidacja utworzonego dokumentu SBML
-        boolean isValidated = SBMLValidator.validateExampleSBML(document);
-
-        System.out.println("Document is: " + isValidated);
+        boolean isValidated = validator.validateExampleSBML(document);
 
         //Zapis dokumentu
         if (isValidated) {
-            SBMLIO.writeExampleSBML(document, "testMatlabSBML.xml");
+            boolean result = SBMLIO.writeExampleSBML(document, name + ".xml");
+            String message = Const.EMPTY;
+            if (result) {
+                message = "Zapis modelu " + name + " do formatu SBML powiódł się.";
+            } else {
+                message = "Zapis modelu " + name + " do formatu SBML nie powiódł się.";
+            }
+            showResultingDialog(message);
+        } else {
+            showErrorDialog("Błędy spójności: " + validator.getConsistencyErrors() + "\n" + "Błędy walidacji: " + validator.getValidationErrors());
         }
     }
 
@@ -149,42 +232,58 @@ public class SBMLCreator {
      * @param determinisicData model deterministyczny Matlab.
      */
     public void createSBMLFromComplexMatlab(ComplexMatlabData stochasticData, ComplexMatlabData determinisicData) {
-        String id = stochasticData.getModelFile().getName().substring(0, stochasticData.getModelFile().getName().length() - 2);
-        docModel.setId(id);
+        //Usunięcie końcówki z nazwy pliku - .m tak aby została sama nazwa.
+        String name = stochasticData.getModelFile().getName().substring(0, stochasticData.getModelFile().getName().length() - 2);
+        docModel.setId(name);
+
+        boolean resultOfStoch = false;
+        boolean resultOfDeterm = false;
 
         Compartment compartment = docModel.createCompartment();
-        compartment.setId(id + "Comp");
+        compartment.setId(name + "Comp");
 
+        //Zapisanie parametrów modelu stochastycznego
         stochasticData.getParameters().forEach(param -> writeMParameter(param));
         stochasticData.getEquations().forEach(eq -> writeMRateRule(eq));
         stochasticData.getFunctionVariables().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param));
         stochasticData.getApoptopicFactorsVars().forEach(var -> writeMSpeciesWithCompartment(compartment.getId(), var));
 
-        boolean isValidated = SBMLValidator.validateExampleSBML(document);
+        boolean isValidated = validator.validateExampleSBML(document);
         System.out.println("Document is: " + isValidated);
 
+        //Jeśli dokument jest poprawny, zapis do pliku
         if (isValidated) {
-            SBMLIO.writeExampleSBML(document, "testMatlabStochSBML.xml");
+            resultOfStoch = SBMLIO.writeExampleSBML(document, name + "_Stoch.xml");
+        } else {
+            showErrorDialog("Błędy spójności: " + validator.getConsistencyErrors() + "\n" + "Błędy walidacji: " + validator.getValidationErrors() + " \n Dla modelu stochastycznego: " + name);
         }
 
         initialize();
 
-        id = determinisicData.getModelFile().getName().substring(0, determinisicData.getModelFile().getName().length() - 2);
-        docModel.setId(id);
+        name = determinisicData.getModelFile().getName().substring(0, determinisicData.getModelFile().getName().length() - 2);
+        docModel.setId(name);
 
         Compartment compartment2 = docModel.createCompartment();
-        compartment2.setId(id + "Comp");
+        compartment2.setId(name + "Comp");
 
+        //Zapisanie parametrów modelu deterministycznego
         determinisicData.getParameters().forEach(param -> writeMParameter(param));
         determinisicData.getEquations().forEach(eq -> writeMRateRule(eq));
         determinisicData.getFunctionVariables().forEach(param -> writeMSpeciesWithCompartment(compartment2.getId(), param));
         determinisicData.getApoptopicFactorsVars().forEach(var -> writeMSpeciesWithCompartment(compartment2.getId(), var));
 
-        boolean isValidated2 = SBMLValidator.validateExampleSBML(document);
+        boolean isValidated2 = validator.validateExampleSBML(document);
         System.out.println("Document is: " + isValidated2);
 
+        //Jeśli dokument jest poprawny, zapis do pliku
         if (isValidated2) {
-            SBMLIO.writeExampleSBML(document, "testMatlabDetSBML.xml");
+            resultOfDeterm = SBMLIO.writeExampleSBML(document, name + "_Determ.xml");
+        } else {
+            showErrorDialog("Błędy spójności: " + validator.getConsistencyErrors() + "\n" + "Błędy walidacji: " + validator.getValidationErrors() + " \n Dla modelu deterministycznego: " + name);
+        }
+
+        if (resultOfStoch && resultOfDeterm) {
+            showResultingDialog("Zapis modeli " + name + " został zakończony sukcesem");
         }
     }
 
@@ -196,50 +295,26 @@ public class SBMLCreator {
     public void writeMParameter(ParameterMatlab parameterMatlab) {
         Parameter para = docModel.createParameter();
         para.setId(parameterMatlab.getName());
-        Double value = convertDecimalWithPowToDouble(parameterMatlab.getValue());
-        para.setValue(value);
+
+        //Dla wartosći prostej parametru, np.: a6=0.1; 
+        try {
+            Double value = sToNConv.convertDecimalWithPowToDouble(parameterMatlab.getValue());
+            para.setValue(value);
+        } catch (NumberFormatException e) {
+            //Dla wartości parametru ze zmienną, np.: a6=ExtSw*0.1; przypisanie równania zmiennej
+            InitialAssignment ia = docModel.createInitialAssignment();
+            ia.setSymbol(parameterMatlab.getName());
+            ia.setMath(libsbml.parseFormula(parameterMatlab.getValue()));
+        }
+
         para.setConstant(Boolean.FALSE);
-    }
-
-    public Double convertDecimalWithPowToDouble(String value) {
-        if (value.contains("/")) {
-            int indexOfSlash = value.indexOf("/");
-            value = value.substring(0, indexOfSlash);
-        }
-        if (value.contains("^")) {
-            int startOfExponent = value.lastIndexOf("^");
-            String exponentWithElements = value.substring(startOfExponent + 1, value.length());
-            String exponent = exponentWithElements.replace("(", "").replace(")", "");
-
-            int signIndex = value.lastIndexOf("*");
-
-            String number = "";
-            if (signIndex == -1) {
-                number = "1";
-            } else {
-                number = value.substring(0, signIndex);
-            }
-
-            String resultNumber = number + "E" + exponent;
-
-            double resultValue = 0;
-            try {
-                resultValue = Double.parseDouble(resultNumber);
-            } catch (Exception e) {
-                System.out.println("Exception: " + e.getMessage());
-                return resultValue;
-            }
-            return resultValue;
-        } else {
-            return Double.parseDouble(value);
-        }
     }
 
     /**
      * Dodanie nowej reguły (Rate Rule) do modelu SBML na podstawie równania
      * Matlab..
      *
-     * @param equationSlv równanie, które zostanie przekstałcone na regułę.
+     * @param equationM równanie, które zostanie przekstałcone na regułę.
      */
     public void writeMRateRule(EquationM equationM) {
         RateRule rateRule = docModel.createRateRule();
@@ -269,9 +344,30 @@ public class SBMLCreator {
      */
     public void writeMSpeciesWithCompartment(String compartmentName, String variable) {
         Species species = docModel.createSpecies();
-        System.out.println("Variable is: " + variable);
         species.setId(variable);
         species.setCompartment(compartmentName);
+    }
+
+    /**
+     * Pokaż dialog z informacją, że model został poprawnie przekonwertowany do
+     * formatu SBML.
+     *
+     * @param message wiadomość do wyświetlenia.
+     */
+    private void showResultingDialog(String message) {
+        messageDialog.setContentText(message);
+        messageDialog.showAndWait();
+    }
+
+    /**
+     * Pokaż dialog z błędem, że model nie został poprawnie przekonwertowanyd do
+     * formatu SBML.
+     *
+     * @param errorMessage wiadomość z błędem.
+     */
+    private void showErrorDialog(String errorMessage) {
+        errorDialog.setContentText(errorMessage);
+        errorDialog.showAndWait();
     }
 
 }

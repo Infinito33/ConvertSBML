@@ -58,7 +58,6 @@ public class SlvReader extends AbstractReader {
             model.setContent(content);
 
             Element element = doc.getDocumentElement();
-            System.out.println(element.getNodeName());
             readInnerNodes(element, model);
 
             //Łapanie wyjątków, czyli ewentualnych błędów, w razie złego zachowania aplikacji.
@@ -67,8 +66,6 @@ public class SlvReader extends AbstractReader {
         } catch (SAXException | IOException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("koniec czytania");
-
         return model;
     }
 
@@ -79,23 +76,31 @@ public class SlvReader extends AbstractReader {
      * @param model model SLV, do którego zapisywane są dane.
      */
     private void readInnerNodes(Node element, ModelSlv model) {
+        //Pobranie liści z aktualnej gałęzi
         NodeList nodeList = element.getChildNodes();
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node currentNode = nodeList.item(i);
+            //Jeśli jest to liść o typie element, którego szukamy
             if (currentNode.getNodeType() == Node.ELEMENT_NODE) {
+                //Jeśli znaleziono gałąź z nazwą modelu
                 if (currentNode.getNodeName().equals("model1")) {
-                    model.setName(extractor.extractModelName(currentNode));
+                    //Zapisz nazwę modelu wraz z usunięciem wszystkich białych znaków
+                    model.setName(extractor.extractModelName(currentNode).replaceAll("\\s+", ""));
                 }
+                //Jeśli znaleziono gałąź z równaniami
                 if (currentNode.getNodeName().equals("Eqs")) {
                     List<EquationSlv> equationsFromSlv = extractor.extractEquationsFrom(currentNode.getTextContent());
                     model.setEquations(equationsFromSlv);
+                    //Jeśli znaleziono gałąź z parametrami
                 } else if (currentNode.getNodeName().equals("parameters")) {
                     NodeList parameters = currentNode.getChildNodes();
                     model.setParameters(extractor.extractParametersFrom(parameters));
+                    //Jeśli znaleziono gałąź z regułami
                 } else if (currentNode.getNodeName().equals("parchangerules")) {
                     NodeList rules = currentNode.getChildNodes();
                     model.setRules(extractor.extractRulesFrom(rules));
                 }
+                //rekurencyjne wywołanie w celu odczytu kolejnej gałęzi
                 readInnerNodes(currentNode, model);
             }
         }
