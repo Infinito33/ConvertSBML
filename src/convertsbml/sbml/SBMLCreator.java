@@ -1,7 +1,7 @@
 package convertsbml.sbml;
 
 import convertsbml.Const;
-import convertsbml.converters.EquationToRateRuleConverter;
+import convertsbml.converters.EquationToRuleConverter;
 import convertsbml.converters.StringToNumberConverter;
 import convertsbml.model.entities.matlab.ComplexMatlabData;
 import convertsbml.model.entities.matlab.EquationM;
@@ -10,8 +10,12 @@ import convertsbml.model.entities.matlab.SimpleMatlabData;
 import convertsbml.model.entities.slv.EquationSlv;
 import convertsbml.model.entities.slv.ModelSlv;
 import convertsbml.model.entities.slv.ParameterSlv;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import javafx.scene.control.Alert;
 import org.sbml.libsbml.ASTNode;
+import org.sbml.libsbml.AlgebraicRule;
 import org.sbml.libsbml.Compartment;
 import org.sbml.libsbml.FunctionDefinition;
 import org.sbml.libsbml.InitialAssignment;
@@ -39,7 +43,7 @@ public class SBMLCreator {
 
     private SBMLDocument document;
     private Model docModel;
-    private EquationToRateRuleConverter conv;
+    private EquationToRuleConverter ruleConverter;
     private StringToNumberConverter sToNConv;
 
     private Alert messageDialog;
@@ -67,7 +71,7 @@ public class SBMLCreator {
     public void initialize() {
         document = new SBMLDocument(level, version);
         docModel = document.createModel();
-        conv = new EquationToRateRuleConverter();
+        ruleConverter = new EquationToRuleConverter();
         sToNConv = new StringToNumberConverter();
 
         addFunctionDefinitions();
@@ -168,7 +172,7 @@ public class SBMLCreator {
      */
     public void writeSlvRateRule(EquationSlv equationSlv) {
         RateRule rateRule = docModel.createRateRule();
-        conv.convertToRateRuleFrom(equationSlv, rateRule);
+        ruleConverter.convertToRateRuleFrom(equationSlv, rateRule);
     }
 
     /**
@@ -203,9 +207,9 @@ public class SBMLCreator {
         compartment.setId(name + "Comp");
 
         //Dodanie gatunków
-        simpleModel.getyEquations().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param));
-        simpleModel.getEquations().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param));
-        simpleModel.getFunctionVariables().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param));
+        simpleModel.getyEquations().forEach(param -> writeSimpleModelSpecificSpeciesWithCompartment(compartment.getId(), param, simpleModel.getVariableInitials()));
+        simpleModel.getEquations().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param, simpleModel.getVariableInitials()));
+        simpleModel.getFunctionVariables().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param, simpleModel.getVariableInitials()));
 
         //Walidacja utworzonego dokumentu SBML
         boolean isValidated = validator.validateExampleSBML(document);
@@ -242,12 +246,40 @@ public class SBMLCreator {
         Compartment compartment = docModel.createCompartment();
         compartment.setId(name + "Comp");
 
+        //Zebranie wszystkich gatunków do jednego zbioru
+        Set<String> species = new HashSet<>();
+        species.addAll(stochasticData.getFunctionVariables());
+        species.addAll(stochasticData.getApoptopicFactorsVars());
+        species.addAll(stochasticData.getStatusChangeData().getFunctionVariables());
+        species.add("Tchange");
+
+        Set<String> speciesTemp = new HashSet<>(species);
+        //Sprawdzenie czy lista gatunków nie zawiera przypadkiem parametru, jeśli tak, usunąć go.
+        stochasticData.getParameters().forEach(param -> {
+            species.forEach(spec -> {
+                if (param.getName().equals(spec)) {
+                    speciesTemp.remove(spec);
+                }
+            });
+        });
+
         //Zapisanie parametrów modelu stochastycznego
         stochasticData.getParameters().forEach(param -> writeMParameter(param));
         stochasticData.getEquations().forEach(eq -> writeMRateRule(eq));
-        stochasticData.getFunctionVariables().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param));
-        stochasticData.getApoptopicFactorsVars().forEach(var -> writeMSpeciesWithCompartment(compartment.getId(), var));
 
+        speciesTemp.forEach(spec -> writeMSpeciesWithCompartment(compartment.getId(), spec, stochasticData.getVariableInitials()));
+
+//        stochasticData.getFunctionVariables().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param));
+//        stochasticData.getApoptopicFactorsVars().forEach(var -> writeMSpeciesWithCompartment(compartment.getId(), var));
+//        stochasticData.getStatusChangeData().getFunctionVariables().forEach(var -> writeMSpeciesWithCompartment(compartment.getId(), var));
+        stochasticData.getStatusChangeData().getEquations().forEach(equation -> writeMAlgebraicRule(equation));
+        stochasticData.getStatusChangeData().getAssignments().forEach(assignment -> writeMAlgebraicRule(assignment));
+        //writeMAlgebraicRule(stochasticData.getStatusChangeData().getRo());
+        //writeMAlgebraicRule(stochasticData.getStatusChangeData().getRoint());
+        //writeMAlgebraicRule(stochasticData.getStatusChangeData().getFd());
+        //writeMAlgebraicRule(stochasticData.getStatusChangeData().getA());
+
+        //Dopisac reszte rownan pojedynczych
         boolean isValidated = validator.validateExampleSBML(document);
         System.out.println("Document is: " + isValidated);
 
@@ -269,8 +301,8 @@ public class SBMLCreator {
         //Zapisanie parametrów modelu deterministycznego
         determinisicData.getParameters().forEach(param -> writeMParameter(param));
         determinisicData.getEquations().forEach(eq -> writeMRateRule(eq));
-        determinisicData.getFunctionVariables().forEach(param -> writeMSpeciesWithCompartment(compartment2.getId(), param));
-        determinisicData.getApoptopicFactorsVars().forEach(var -> writeMSpeciesWithCompartment(compartment2.getId(), var));
+        determinisicData.getFunctionVariables().forEach(param -> writeMSpeciesWithCompartment(compartment2.getId(), param, determinisicData.getVariableInitials()));
+        determinisicData.getApoptopicFactorsVars().forEach(var -> writeMSpeciesWithCompartment(compartment2.getId(), var, determinisicData.getVariableInitials()));
 
         boolean isValidated2 = validator.validateExampleSBML(document);
         System.out.println("Document is: " + isValidated2);
@@ -318,7 +350,20 @@ public class SBMLCreator {
      */
     public void writeMRateRule(EquationM equationM) {
         RateRule rateRule = docModel.createRateRule();
-        conv.convertToRateRuleFrom(equationM, rateRule);
+        ruleConverter.convertToRateRuleFrom(equationM, rateRule);
+    }
+
+    /**
+     * Dodanie nowej reguły (Algebraic Rule) do modelu SBML na podstawie
+     * równania Matlab.
+     *
+     * @param equationM równanie, które zostanie przekształcone na regułę
+     */
+    public void writeMAlgebraicRule(EquationM equationM) {
+        if (!equationM.getLeftSide().contains("rand") && !equationM.getLeftSide().contains("fd") && !equationM.getRightSide().contains("rand") && !equationM.getRightSide().contains("fd")) {
+            AlgebraicRule algebraicRule = docModel.createAlgebraicRule();
+            ruleConverter.convertToAlgebraicRuleFrom(equationM, algebraicRule);
+        }
     }
 
     /**
@@ -328,11 +373,40 @@ public class SBMLCreator {
      * przypisany zostanie gatunek.
      * @param equationMatlab równanie, którego lewa strona (zmienna) zostanie
      * dodana jako gatunek.
+     * @param initialValues poczatkowe wartości zmiennych.
      */
-    public void writeMSpeciesWithCompartment(String compartmentName, EquationM equationMatlab) {
+    public void writeMSpeciesWithCompartment(String compartmentName, EquationM equationMatlab, Map<String, Double> initialValues) {
         Species species = docModel.createSpecies();
         species.setId(equationMatlab.getLeftSide());
         species.setCompartment(compartmentName);
+        if (initialValues.containsKey(equationMatlab.getLeftSide())) {
+            System.out.println("Adding initial value: " + initialValues.get(equationMatlab.getLeftSide()) + " for variable: " + equationMatlab.getLeftSide());
+            species.setInitialAmount(initialValues.get(equationMatlab.getLeftSide()));
+        } else {
+            species.setInitialAmount(0.0);
+        }
+    }
+
+    /**
+     * Dodanie nowego gatunku do modelu SBML - Matlab
+     *
+     * @param compartmentName nazwa przedziału (model Matlab) do którego
+     * przypisany zostanie gatunek.
+     * @param equationMatlab równanie, którego lewa strona (zmienna) zostanie
+     * dodana jako gatunek.
+     * @param initialValues poczatkowe wartości zmiennych.
+     */
+    public void writeSimpleModelSpecificSpeciesWithCompartment(String compartmentName, EquationM equationMatlab, Map<String, Double> initialValues) {
+        Species species = docModel.createSpecies();
+        species.setId(equationMatlab.getLeftSide());
+        species.setCompartment(compartmentName);
+        String rightAssignment = equationMatlab.getRightSide().replace("(", "").replace(");", "");
+        if (initialValues.containsKey(rightAssignment)) {
+            System.out.println("Adding initial value: " + initialValues.get(rightAssignment) + " for variable: " + equationMatlab.getLeftSide());
+            species.setInitialAmount(initialValues.get(rightAssignment));
+        } else {
+            species.setInitialAmount(0.0);
+        }
     }
 
     /**
@@ -341,11 +415,22 @@ public class SBMLCreator {
      * @param compartmentName nazwa przedziału (model Matlab) do którego
      * przypisany zostanie gatunek.
      * @param variable zmienna funkcji, która zostanie dodana jako gatunek.
+     * @param initialValues poczatkowe wartości zmiennych.
      */
-    public void writeMSpeciesWithCompartment(String compartmentName, String variable) {
+    public void writeMSpeciesWithCompartment(String compartmentName, String variable, Map<String, Double> initialValues) {
         Species species = docModel.createSpecies();
         species.setId(variable);
         species.setCompartment(compartmentName);
+
+        for (Map.Entry<String, Double> entry : initialValues.entrySet()) {
+            if (entry.getKey().equals(variable) || entry.getKey().contains(variable)) {
+                System.out.println("Adding initial value: " + entry.getValue() + " for variable: " + variable);
+                species.setInitialAmount(entry.getValue());
+                return;
+            }
+        }
+
+        species.setInitialAmount(0.0);
     }
 
     /**

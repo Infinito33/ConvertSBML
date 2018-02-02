@@ -2,8 +2,10 @@ package convertsbml.model.entities.matlab;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -23,6 +25,7 @@ public abstract class AbstractMatlabModel {
     private File parameterFile;
     private List<String> modelContent;
     private List<String> parametersContent;
+    private Map<String, Double> variableInitials;
 
     public AbstractMatlabModel() {
         equations = new ArrayList<>();
@@ -30,6 +33,7 @@ public abstract class AbstractMatlabModel {
         modelContent = new ArrayList<>();
         parametersContent = new ArrayList<>();
         functionVariables = new HashSet<>();
+        variableInitials = new HashMap<>();
     }
 
     public String getFunction() {
@@ -110,6 +114,14 @@ public abstract class AbstractMatlabModel {
 
     public void setFunctionVariables(Set<String> functionVariables) {
         this.functionVariables = functionVariables;
+    }
+
+    public Map<String, Double> getVariableInitials() {
+        return variableInitials;
+    }
+
+    public void setVariableInitials(Map<String, Double> variableInitials) {
+        this.variableInitials = variableInitials;
     }
 
 }

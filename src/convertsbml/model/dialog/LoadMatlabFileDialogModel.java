@@ -18,10 +18,14 @@ public class LoadMatlabFileDialogModel {
     private BooleanProperty isComplexModel;
     private StringProperty simpleModelPath;
     private StringProperty simpleParametersPath;
+    private StringProperty simpleSimulationEntryPath;
     private StringProperty complexDeterministicModelPath;
     private StringProperty complexDeterministicParametersPath;
     private StringProperty complexStochasticModelPath;
     private StringProperty complexStochasticParametersPath;
+    private StringProperty complexStochasticSimulationEntryPath;
+    private StringProperty complexDeterministicSimulationEntryPath;
+    private StringProperty stochasticStatusChangePath;
     private String name;
 
     /**
@@ -32,10 +36,14 @@ public class LoadMatlabFileDialogModel {
         isComplexModel = new SimpleBooleanProperty(Boolean.FALSE);
         simpleModelPath = new SimpleStringProperty(Const.EMPTY);
         simpleParametersPath = new SimpleStringProperty(Const.EMPTY);
+        simpleSimulationEntryPath = new SimpleStringProperty(Const.EMPTY);
         complexDeterministicModelPath = new SimpleStringProperty(Const.EMPTY);
         complexDeterministicParametersPath = new SimpleStringProperty(Const.EMPTY);
         complexStochasticModelPath = new SimpleStringProperty(Const.EMPTY);
         complexStochasticParametersPath = new SimpleStringProperty(Const.EMPTY);
+        complexStochasticSimulationEntryPath = new SimpleStringProperty(Const.EMPTY);
+        complexDeterministicSimulationEntryPath = new SimpleStringProperty(Const.EMPTY);
+        stochasticStatusChangePath = new SimpleStringProperty(Const.EMPTY);
     }
 
     public BooleanProperty getIsSimpleModel() {
@@ -108,6 +116,38 @@ public class LoadMatlabFileDialogModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public StringProperty getSimpleSimulationEntryPath() {
+        return simpleSimulationEntryPath;
+    }
+
+    public void setSimpleSimulationEntryPath(String simpleSimulationEntryPath) {
+        this.simpleSimulationEntryPath.setValue(simpleSimulationEntryPath);
+    }
+
+    public StringProperty getComplexStochasticSimulationEntryPath() {
+        return complexStochasticSimulationEntryPath;
+    }
+
+    public void setComplexStochasticSimulationEntryPath(String complexStochasticSimulationEntryPath) {
+        this.complexStochasticSimulationEntryPath.setValue(complexStochasticSimulationEntryPath);
+    }
+
+    public StringProperty getComplexDeterministicSimulationEntryPath() {
+        return complexDeterministicSimulationEntryPath;
+    }
+
+    public void setComplexDeterministicSimulationEntryPath(String complexDeterministicSimulationEntryPath) {
+        this.complexDeterministicSimulationEntryPath.setValue(complexDeterministicSimulationEntryPath);
+    }
+
+    public StringProperty getStochasticStatusChangePath() {
+        return stochasticStatusChangePath;
+    }
+
+    public void setStochasticStatusChangePath(String stochasticStatusChangePath) {
+        this.stochasticStatusChangePath.setValue(stochasticStatusChangePath);
     }
 
 }

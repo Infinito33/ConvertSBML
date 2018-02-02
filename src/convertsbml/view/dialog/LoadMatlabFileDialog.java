@@ -43,6 +43,10 @@ public class LoadMatlabFileDialog implements Initializable {
     private TextField simpleParametersPath;
     @FXML
     private Button chooseSimpleParameterPathBtn;
+    @FXML
+    private TextField simpleSimulationEntryPath;
+    @FXML
+    private Button chooseSimpleSimulationEntryPathBtn;
 
     @FXML
     private CheckBox complexModelCheck;
@@ -62,6 +66,18 @@ public class LoadMatlabFileDialog implements Initializable {
     private TextField complexStochasticParametersPath;
     @FXML
     private Button chooseComplexStochasticParametersPathBtn;
+    @FXML
+    private TextField complexStochasticSimulationEntryPath;
+    @FXML
+    private Button chooseComplexStochasticSimulationEntryPathBtn;
+    @FXML
+    private TextField complexDeterministicSimulationEntryPath;
+    @FXML
+    private Button chooseComplexDeterministicSimulationEntryPathBtn;
+    @FXML
+    private TextField stochasticStatusChangePath;
+    @FXML
+    private Button chooseStochasticStatusChangePathBtn;
 
     private Button okButton;
     private ButtonType applyBtn;
@@ -102,18 +118,24 @@ public class LoadMatlabFileDialog implements Initializable {
         controller.getModel().getIsSimpleModel().bind(simpleModelCheck.selectedProperty());
         controller.getModel().getIsComplexModel().bind(complexModelCheck.selectedProperty());
         controller.getModel().getSimpleModelPath().bind(simpleModelPath.textProperty());
+        controller.getModel().getSimpleSimulationEntryPath().bind(simpleSimulationEntryPath.textProperty());
         //Połącz zmienną simpleParametersPath z modelu z wartością pola tekstowego simpleParametersPath z widoku.
         controller.getModel().getSimpleParametersPath().bind(simpleParametersPath.textProperty());
         controller.getModel().getComplexStochasticModelPath().bind(complexStochasticModelPath.textProperty());
         controller.getModel().getComplexStochasticParametersPath().bind(complexStochasticParametersPath.textProperty());
         controller.getModel().getComplexDeterministicModelPath().bind(complexDeterministicModelPath.textProperty());
         controller.getModel().getComplexDeterministicParametersPath().bind(complexDeterministicParametersPath.textProperty());
+        controller.getModel().getComplexStochasticSimulationEntryPath().bind(complexStochasticSimulationEntryPath.textProperty());
+        controller.getModel().getComplexDeterministicSimulationEntryPath().bind(complexDeterministicSimulationEntryPath.textProperty());
+        controller.getModel().getStochasticStatusChangePath().bind(stochasticStatusChangePath.textProperty());
 
         //Bindowanie pola tekstowego ze ścieżką - simpleModelPath tak, aby zostało wyłączone w momencie gdy checkbox complexModelCheck zostanie włączony - wzajemna relacja wyłączania się.
         simpleModelPath.disableProperty().bindBidirectional(complexModelCheck.selectedProperty());
         simpleParametersPath.disableProperty().bindBidirectional(complexModelCheck.selectedProperty());
+        simpleSimulationEntryPath.disableProperty().bindBidirectional(complexModelCheck.selectedProperty());
         chooseSimpleModelPathBtn.disableProperty().bindBidirectional(complexModelCheck.selectedProperty());
         chooseSimpleParameterPathBtn.disableProperty().bindBidirectional(complexModelCheck.selectedProperty());
+        chooseSimpleSimulationEntryPathBtn.disableProperty().bindBidirectional(complexModelCheck.selectedProperty());
 
         complexDeterministicModelPath.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
         complexDeterministicParametersPath.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
@@ -123,6 +145,12 @@ public class LoadMatlabFileDialog implements Initializable {
         complexStochasticParametersPath.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
         chooseComplexStochasticModelPathBtn.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
         chooseComplexStochasticParametersPathBtn.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
+        complexStochasticSimulationEntryPath.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
+        complexDeterministicSimulationEntryPath.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
+        chooseComplexStochasticSimulationEntryPathBtn.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
+        chooseComplexDeterministicSimulationEntryPathBtn.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
+        stochasticStatusChangePath.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
+        chooseStochasticStatusChangePathBtn.disableProperty().bindBidirectional(simpleModelCheck.selectedProperty());
     }
 
     /**
@@ -223,8 +251,8 @@ public class LoadMatlabFileDialog implements Initializable {
     @FXML
     public void chooseSimpleModelPathAction() {
         //File modelPath = loadFile("Wybierz ścieżkę modelu prostego", MATLAB_EXT);
-        //File modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
-        File modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
+        File modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File modelPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
         if (modelPath != null) {
             simpleModelPath.setText(modelPath.getAbsolutePath());
             model.setName(modelPath.getName());
@@ -237,10 +265,23 @@ public class LoadMatlabFileDialog implements Initializable {
     @FXML
     public void chooseSimpleParameterPathAction() {
         //File parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT);
-        //File parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
-        File parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
+        File parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File parametersPath = loadFile("Wybierz ścieżkę parametrów modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
         if (parametersPath != null) {
             simpleParametersPath.setText(parametersPath.getAbsolutePath());
+        }
+    }
+
+    /**
+     * Wybiera ścieżkę dla pliku symulacyjnego modelu prostego.
+     */
+    @FXML
+    public void chooseSimpleSimulationPathAction() {
+        //File simulationPath = loadFile("Wybierz ścieżkę pliku symulacyjnego modelu prostego", MATLAB_EXT);
+        File simulationPath = loadFile("Wybierz ścieżkę pliku symulacyjnego modelu prostego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File simulationPath = loadFile("Wybierz ścieżkę pliku symulacyjnego modelu prostego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
+        if (simulationPath != null) {
+            simpleSimulationEntryPath.setText(simulationPath.getAbsolutePath());
         }
     }
 
@@ -250,8 +291,8 @@ public class LoadMatlabFileDialog implements Initializable {
     @FXML
     public void chooseComplexDeterministicModelPathAction() {
         //File modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT);
-        //File modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
-        File modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
+        File modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File modelPath = loadFile("Wybierz ścieżkę deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
         if (modelPath != null) {
             complexDeterministicModelPath.setText(modelPath.getAbsolutePath());
             model.setName(modelPath.getName());
@@ -264,8 +305,8 @@ public class LoadMatlabFileDialog implements Initializable {
     @FXML
     public void chooseComplexDeterministicParametersPathAction() {
         //File parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT);
-        //File parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
-        File parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
+        File parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File parametersPath = loadFile("Wybierz ścieżkę parametrów deterministycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
         if (parametersPath != null) {
             complexDeterministicParametersPath.setText(parametersPath.getAbsolutePath());
         }
@@ -277,8 +318,8 @@ public class LoadMatlabFileDialog implements Initializable {
     @FXML
     public void chooseComplexStochasticModelPathAction() {
         //File modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT);
-        //File modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
-        File modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
+        File modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File modelPath = loadFile("Wybierz ścieżkę stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
         if (modelPath != null) {
             complexStochasticModelPath.setText(modelPath.getAbsolutePath());
         }
@@ -290,10 +331,50 @@ public class LoadMatlabFileDialog implements Initializable {
     @FXML
     public void chooseComplexStochasticParametersPathAction() {
         //File parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT);
-        //File parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
-        File parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
+        File parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File parametersPath = loadFile("Wybierz ścieżkę parametrów stochastycznego modelu złożonego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
         if (parametersPath != null) {
             complexStochasticParametersPath.setText(parametersPath.getAbsolutePath());
+        }
+    }
+
+    /**
+     * Wybiera ścieżkę dla pliku symulacyjnego modelu złożonego stochastycznego.
+     */
+    @FXML
+    public void chooseComplexStochasticSimulationPathAction() {
+        //File simulationPath = loadFile("Wybierz ścieżkę pliku symulacyjnego złożonego stochastycznego", MATLAB_EXT);
+        File simulationPath = loadFile("Wybierz ścieżkę pliku symulacyjnego modelu złożonego stochastycznego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File simulationPath = loadFile("Wybierz ścieżkę pliku symulacyjnego złożonego stochastycznego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
+        if (simulationPath != null) {
+            complexStochasticSimulationEntryPath.setText(simulationPath.getAbsolutePath());
+        }
+    }
+
+    /**
+     * Wybiera ścieżkę dla pliku symulacyjnego modelu złożonego
+     * deterministycznego.
+     */
+    @FXML
+    public void chooseComplexDeterministicSimulationPathAction() {
+        //File simulationPath = loadFile("Wybierz ścieżkę pliku symulacyjnego złożonego deterministycznego", MATLAB_EXT);
+        File simulationPath = loadFile("Wybierz ścieżkę pliku symulacyjnego modelu złożonego deterministycznego", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File simulationPath = loadFile("Wybierz ścieżkę pliku symulacyjnego złożonego deterministycznego", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab");
+        if (simulationPath != null) {
+            complexDeterministicSimulationEntryPath.setText(simulationPath.getAbsolutePath());
+        }
+    }
+
+    /**
+     * Wybiera ścieżkę dla pliku status change modelu stochastycznego.
+     */
+    @FXML
+    public void chooseStatusChangePathAction() {
+        //File statusChangePath = loadFile("Wybierz ścieżkę pliku status change", MATLAB_EXT);
+        File statusChangePath = loadFile("Wybierz ścieżkę pliku status change", MATLAB_EXT, "C:\\Users\\tomasz.huchro\\Desktop\\ConvertSBML\\Modele_Matlab");
+        //File statusChangePath = loadFile("Wybierz ścieżkę pliku status change", MATLAB_EXT, "C:\\Users\\tomol_000\\Desktop\\ConvertSBML\\Modele_Matlab\\JTB");
+        if (statusChangePath != null) {
+            stochasticStatusChangePath.setText(statusChangePath.getAbsolutePath());
         }
     }
 
@@ -346,8 +427,11 @@ public class LoadMatlabFileDialog implements Initializable {
         complexModelCheck.setSelected(!simpleModelCheck.selectedProperty().get());
         complexDeterministicModelPath.setText(Const.EMPTY);
         complexDeterministicParametersPath.setText(Const.EMPTY);
+        complexDeterministicSimulationEntryPath.setText(Const.EMPTY);
         complexStochasticModelPath.setText(Const.EMPTY);
         complexStochasticParametersPath.setText(Const.EMPTY);
+        complexStochasticSimulationEntryPath.setText(Const.EMPTY);
+        stochasticStatusChangePath.setText(Const.EMPTY);
     }
 
     /**
@@ -359,6 +443,7 @@ public class LoadMatlabFileDialog implements Initializable {
         simpleModelCheck.setSelected(!complexModelCheck.selectedProperty().get());
         simpleModelPath.setText(Const.EMPTY);
         simpleParametersPath.setText(Const.EMPTY);
+        simpleSimulationEntryPath.setText(Const.EMPTY);
     }
 
     /**

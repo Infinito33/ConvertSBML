@@ -15,6 +15,8 @@ public class ComplexMatlabData extends AbstractMatlabModel {
     private List<String> apoptopicFactorsVars;
     private EComplexMatlabModelType modelType;
     private List<String> yVariables;
+    //Tylko dla modelu stochastycznego
+    private StatusChangeMatlabData statusChangeData;
 
     public ComplexMatlabData() {
         apoptoticFactors = new ArrayList<>();
@@ -52,6 +54,14 @@ public class ComplexMatlabData extends AbstractMatlabModel {
 
     public void setApoptopicFactorsVars(List<String> apoptopicFactorsVars) {
         this.apoptopicFactorsVars = apoptopicFactorsVars;
+    }
+
+    public void setStatusChangeData(StatusChangeMatlabData statusChangeData) {
+        this.statusChangeData = statusChangeData;
+    }
+    
+    public StatusChangeMatlabData getStatusChangeData() {
+        return statusChangeData;
     }
 
 }

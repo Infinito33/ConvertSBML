@@ -13,14 +13,14 @@ public class EquationM {
     private String comment;
 
     public EquationM(String full) {
-        this.full = full;
+        this.full = full.trim();
     }
 
     public EquationM(String full, String leftSide, String rightSide, String comment) {
-        this.full = full;
-        this.leftSide = leftSide;
-        this.rightSide = rightSide;
-        this.comment = comment;
+        this.full = full.trim();
+        this.leftSide = leftSide.trim();
+        this.rightSide = rightSide.trim();
+        this.comment = comment.trim();
     }
 
     public String getFull() {
@@ -28,7 +28,7 @@ public class EquationM {
     }
 
     public void setFull(String full) {
-        this.full = full;
+        this.full = full.trim();
     }
 
     public String getLeftSide() {
@@ -36,7 +36,7 @@ public class EquationM {
     }
 
     public void setLeftSide(String leftSide) {
-        this.leftSide = leftSide;
+        this.leftSide = leftSide.trim();
     }
 
     public String getRightSide() {
@@ -44,7 +44,7 @@ public class EquationM {
     }
 
     public void setRightSide(String rightSide) {
-        this.rightSide = rightSide;
+        this.rightSide = rightSide.trim();
     }
 
     public String getComment() {
@@ -52,6 +52,6 @@ public class EquationM {
     }
 
     public void setComment(String comment) {
-        this.comment = comment;
+        this.comment = comment.trim();
     }
 }

@@ -58,7 +58,16 @@ public class StringToNumberConverter {
             //Wyciągnięcie całości wykładnika
             String exponentWithElements = value.substring(startOfExponent + 1, value.length());
             //Wyciągnięcie wartości wykładnika
-            String exponent = exponentWithElements.replace("(", "").replace(")", "");
+            String exponentWithPossibleTail = exponentWithElements.replace("(", "").replace(")", "");
+            
+            String exponent = "";
+            if(exponentWithPossibleTail.contains("/")) {
+                String[] values = exponentWithPossibleTail.split("/");
+                exponent = values[0];
+            } else {
+                exponent = exponentWithPossibleTail;
+            }
+            
             //Pobranie indeksu znaku mnożenia
             int signIndex = value.lastIndexOf("*");
 

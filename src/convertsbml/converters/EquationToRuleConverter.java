@@ -3,6 +3,7 @@ package convertsbml.converters;
 import convertsbml.model.entities.matlab.EquationM;
 import convertsbml.model.entities.slv.EquationSlv;
 import org.sbml.libsbml.ASTNode;
+import org.sbml.libsbml.AlgebraicRule;
 import org.sbml.libsbml.RateRule;
 import org.sbml.libsbml.libsbml;
 
@@ -11,23 +12,23 @@ import org.sbml.libsbml.libsbml;
  *
  * @author Magda
  */
-public class EquationToRateRuleConverter {
+public class EquationToRuleConverter {
 
     //ID reguły
     private String metaid;
-
-    /**
-     * Domyślny konstruktor konwertera, który inicjalizuje dane.
-     */
-    public EquationToRateRuleConverter() {
-        initConverter();
-    }
 
     /**
      * Inicjalizacja danych konwertera.
      */
     public void initConverter() {
         metaid = "metaid_0000001";
+    }
+
+    /**
+     * Domyślny konstruktor konwertera, który inicjalizuje dane.
+     */
+    public EquationToRuleConverter() {
+        initConverter();
     }
 
     /**
@@ -67,11 +68,27 @@ public class EquationToRateRuleConverter {
 
         //Przetworzenie równania na drzewo z node'ami, które można bezpośrednio wstawić do SBML.
         ASTNode node = libsbml.parseFormula(equationM.getRightSide());
-        if (equationM.getRightSide().contains("sign")) {
-            System.out.println("bubel");
-        }
 
         rateRule.setMath(node);
+
+        updateMetaId();
+    }
+    
+        /**
+     * Funkcja konwertująca równanie do reguły.
+     *
+     * @param equationM równanie wejściowe - matlab.
+     * @param algebraicRule reguła wyjściowa.
+     */
+    public void convertToAlgebraicRuleFrom(EquationM equationM, AlgebraicRule algebraicRule) {
+        algebraicRule.setMetaId(metaid);
+
+        algebraicRule.setVariable(equationM.getLeftSide());
+
+        //Przetworzenie równania na drzewo z node'ami, które można bezpośrednio wstawić do SBML.
+        ASTNode node = libsbml.parseFormula(equationM.getRightSide());
+
+        algebraicRule.setMath(node);
 
         updateMetaId();
     }
@@ -79,7 +96,7 @@ public class EquationToRateRuleConverter {
     /**
      * Aktualizacja ID reguły.
      */
-    private void updateMetaId() {
+    protected void updateMetaId() {
         int underscoreIndex = metaid.indexOf("_");
         //Wyciągnięcie samej liczby z ID: metaid_xxxxxx gdzie xxxxxx to liczba
         String valueStr = metaid.substring(underscoreIndex + 1);
