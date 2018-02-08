@@ -16,6 +16,7 @@ import java.util.Set;
 import javafx.scene.control.Alert;
 import org.sbml.libsbml.ASTNode;
 import org.sbml.libsbml.AlgebraicRule;
+import org.sbml.libsbml.AssignmentRule;
 import org.sbml.libsbml.Compartment;
 import org.sbml.libsbml.FunctionDefinition;
 import org.sbml.libsbml.InitialAssignment;
@@ -272,8 +273,8 @@ public class SBMLCreator {
 //        stochasticData.getFunctionVariables().forEach(param -> writeMSpeciesWithCompartment(compartment.getId(), param));
 //        stochasticData.getApoptopicFactorsVars().forEach(var -> writeMSpeciesWithCompartment(compartment.getId(), var));
 //        stochasticData.getStatusChangeData().getFunctionVariables().forEach(var -> writeMSpeciesWithCompartment(compartment.getId(), var));
-        stochasticData.getStatusChangeData().getEquations().forEach(equation -> writeMAlgebraicRule(equation));
-        stochasticData.getStatusChangeData().getAssignments().forEach(assignment -> writeMAlgebraicRule(assignment));
+        stochasticData.getStatusChangeData().getEquations().forEach(equation -> writeMAssignmentRule(equation));
+        stochasticData.getStatusChangeData().getAssignments().forEach(assignment -> writeMAssignmentRule(assignment));
         //writeMAlgebraicRule(stochasticData.getStatusChangeData().getRo());
         //writeMAlgebraicRule(stochasticData.getStatusChangeData().getRoint());
         //writeMAlgebraicRule(stochasticData.getStatusChangeData().getFd());
@@ -367,6 +368,19 @@ public class SBMLCreator {
     }
 
     /**
+     * Dodanie nowej reguły (Assignment Rule) do modelu SBML na podstawie
+     * równania Matlab.
+     *
+     * @param equationM równanie, które zostanie przekształcone na regułę
+     */
+    public void writeMAssignmentRule(EquationM equationM) {
+        if (!equationM.getLeftSide().contains("rand") && !equationM.getLeftSide().contains("fd") && !equationM.getRightSide().contains("rand") && !equationM.getRightSide().contains("fd")) {
+            AssignmentRule assignmentRule = docModel.createAssignmentRule();
+            ruleConverter.convertToAssignmentRuleFrom(equationM, assignmentRule);
+        }
+    }
+
+    /**
      * Dodanie nowego gatunku do modelu SBML - Matlab
      *
      * @param compartmentName nazwa przedziału (model Matlab) do którego
@@ -402,7 +416,6 @@ public class SBMLCreator {
         species.setCompartment(compartmentName);
         String rightAssignment = equationMatlab.getRightSide().replace("(", "").replace(");", "");
         if (initialValues.containsKey(rightAssignment)) {
-            System.out.println("Adding initial value: " + initialValues.get(rightAssignment) + " for variable: " + equationMatlab.getLeftSide());
             species.setInitialAmount(initialValues.get(rightAssignment));
         } else {
             species.setInitialAmount(0.0);
@@ -424,7 +437,6 @@ public class SBMLCreator {
 
         for (Map.Entry<String, Double> entry : initialValues.entrySet()) {
             if (entry.getKey().equals(variable) || entry.getKey().contains(variable)) {
-                System.out.println("Adding initial value: " + entry.getValue() + " for variable: " + variable);
                 species.setInitialAmount(entry.getValue());
                 return;
             }

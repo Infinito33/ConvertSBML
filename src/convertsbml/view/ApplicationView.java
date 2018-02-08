@@ -19,7 +19,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -98,8 +97,6 @@ public class ApplicationView implements Initializable {
         //Utworzenie obiektu do wybierania plików
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
-        //fileChooser.setInitialDirectory(new File("D:\\Programy\\Dropbox\\MY\\Projekt"));
-        //fileChooser.setInitialDirectory(new File("C:\\Users\\tomasz.huchro\\Desktop\\Projekt"));
 
         //Pobranie okna sceny w celu wyświetlenia na nim dialogu do wyboru pliku
         Scene scene = mainPane.getScene();
@@ -108,15 +105,17 @@ public class ApplicationView implements Initializable {
         //Utworzenie obiektu pliku i przypisanie do niego wybranego pliku z okna dialogowego
         File slvFile = fileChooser.showOpenDialog(window);
         //Zapisanie naszego pliku slv do głównego modelu danych.
-        appModel.setSlvModelFile(slvFile);
+        if (slvFile != null) {
+            appModel.setSlvModelFile(slvFile);
 
-        //Utworzenie obiektu slv reader (do czytania plikow slv)
-        //Utworzenie obiektu ModelSlv, ktory bedzie zawieral dane z pliku slv i przypisanie do niego danych po odczytaniu ich z funkcji slvReader.readSlv
-        ModelSlv modelSlv = slvReader.readSlv(appModel.getSlvModelFile().getAbsolutePath());
-        modelSlv.setSlvFile(slvFile);
-        appModel.addSlvModel(modelSlv);
+            //Utworzenie obiektu slv reader (do czytania plikow slv)
+            //Utworzenie obiektu ModelSlv, ktory bedzie zawieral dane z pliku slv i przypisanie do niego danych po odczytaniu ich z funkcji slvReader.readSlv
+            ModelSlv modelSlv = slvReader.readSlv(appModel.getSlvModelFile().getAbsolutePath());
+            modelSlv.setSlvFile(slvFile);
+            appModel.addSlvModel(modelSlv);
 
-        addSlvModelToMenuList(modelSlv);
+            addSlvModelToMenuList(modelSlv);
+        }
     }
 
     /**
@@ -140,26 +139,17 @@ public class ApplicationView implements Initializable {
         Button showContentBtn = new Button("Zawartość");
         showContentBtn.setUserData(this);
         //Akcja która zostanie wywołana w momencie wciśnięcia przycisku.
-        showContentBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                showModelContentAction(modelSlv.getContent(), modelSlv.getName());
-            }
+        showContentBtn.setOnAction((ActionEvent event) -> {
+            showModelContentAction(modelSlv.getContent(), modelSlv.getName());
         });
 
         Button showStatisticsBtn = new Button("Statystyki");
-        showStatisticsBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                showSlvModelStatisticsAction(modelSlv);
-            }
+        showStatisticsBtn.setOnAction((ActionEvent event) -> {
+            showSlvModelStatisticsAction(modelSlv);
         });
         Button convertToSbmlBtn = new Button("Konwertuj do SBML");
-        convertToSbmlBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                convertSlvToSbmlAction(modelSlv);
-            }
+        convertToSbmlBtn.setOnAction((ActionEvent event) -> {
+            convertSlvToSbmlAction(modelSlv);
         });
 
         //Ustawienie stylów i wykości dla przycisków
@@ -263,7 +253,6 @@ public class ApplicationView implements Initializable {
                 addMatlabModelToMenuList(matlabModel);
             }
         }
-
     }
 
     /**

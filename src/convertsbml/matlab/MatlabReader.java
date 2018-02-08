@@ -39,7 +39,7 @@ public class MatlabReader extends AbstractReader {
     private final String MODEL_FUNCTION = "function.*";
     private final String MODEL_PARAMETER = "^\\[.*";
     private final String MODEL_ZEROS = "zeros";
-    private final String PARAMETER = "[A-Za-z]*=.*;";
+    private final String PARAMETER = "[A-Za-z0-9]*=.*;";
 
     private final String C_MODEL_FACTOR_EQUATION = "^[A-Z]{2,}.*";
     private final String C_MODEL_EQUATION = "dy\\([0-9]*\\)=.*";
@@ -450,7 +450,7 @@ public class MatlabReader extends AbstractReader {
             }
 
             //Wyszukiwanie równań
-            boolean isEquationFound = STATUS_EQUATION_PATTERN.matcher(line).find() && !line.startsWith("%") && !line.trim().startsWith("if");
+            boolean isEquationFound = STATUS_EQUATION_PATTERN.matcher(line).find() && !line.startsWith("%") && !line.trim().startsWith("if") && !line.trim().endsWith("ss;");
             if (isEquationFound) {
                 EquationM equation = extractor.extractStatusChangeEquationFrom(line);
                 equations.add(equation);
@@ -459,7 +459,7 @@ public class MatlabReader extends AbstractReader {
             }
 
             //Wyszukiwanie przypisań
-            boolean isAssignmentFound = STATUS_ASSIGNMENTS_PATTERN.matcher(line).find() && !line.startsWith("%") && !line.contains("rand") && !line.trim().startsWith("if");
+            boolean isAssignmentFound = STATUS_ASSIGNMENTS_PATTERN.matcher(line).find() && !line.startsWith("%") && !line.contains("rand") && !line.trim().startsWith("if") && !line.trim().endsWith("ss;");
             if (isAssignmentFound) {
                 Set<String> variables = new HashSet<>();
                 EquationM assignment = extractor.extractStatusChangeAssignEquationFrom(line, variables);

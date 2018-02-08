@@ -4,6 +4,7 @@ import convertsbml.model.entities.matlab.EquationM;
 import convertsbml.model.entities.slv.EquationSlv;
 import org.sbml.libsbml.ASTNode;
 import org.sbml.libsbml.AlgebraicRule;
+import org.sbml.libsbml.AssignmentRule;
 import org.sbml.libsbml.RateRule;
 import org.sbml.libsbml.libsbml;
 
@@ -73,8 +74,8 @@ public class EquationToRuleConverter {
 
         updateMetaId();
     }
-    
-        /**
+
+    /**
      * Funkcja konwertująca równanie do reguły.
      *
      * @param equationM równanie wejściowe - matlab.
@@ -112,6 +113,25 @@ public class EquationToRuleConverter {
         } else {
             metaid = "metaid_000" + value;
         }
+    }
+
+    /**
+     * Funkcja konwertująca równanie do reguły.
+     *
+     * @param equationM równanie wejściowe - matlab.
+     * @param assignmentRule reguła wyjściowa.
+     */
+    public void convertToAssignmentRuleFrom(EquationM equationM, AssignmentRule assignmentRule) {
+        assignmentRule.setMetaId(metaid);
+
+        assignmentRule.setVariable(equationM.getLeftSide());
+
+        //Przetworzenie równania na drzewo z node'ami, które można bezpośrednio wstawić do SBML.
+        ASTNode node = libsbml.parseFormula(equationM.getRightSide());
+
+        assignmentRule.setMath(node);
+
+        updateMetaId();
     }
 
 }
