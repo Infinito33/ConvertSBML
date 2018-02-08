@@ -11,8 +11,11 @@ import convertsbml.model.entities.slv.EquationSlv;
 import convertsbml.model.entities.slv.ModelSlv;
 import convertsbml.model.entities.slv.ParameterSlv;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javafx.scene.control.Alert;
 import org.sbml.libsbml.ASTNode;
 import org.sbml.libsbml.AlgebraicRule;
@@ -125,15 +128,18 @@ public class SBMLCreator {
     public void createSBMLFromSlv(ModelSlv modelSlv) {
         docModel.setId(modelSlv.getName());
 
+        List<ParameterSlv> params = modelSlv.getParameters().stream().filter(param -> param.getType().equals("0")).collect(Collectors.toList());
+        List<ParameterSlv> species = modelSlv.getParameters().stream().filter(param -> !param.getType().equals("0")).collect(Collectors.toList());
+        
         //Zapis parametrów z modelu SLV
-        //modelSlv.getParameters().forEach(param -> writeSlvParameter(param));
+        params.forEach(param -> writeSlvParameter(param));
         //Zapis równań SLV w postaci reguł.
         modelSlv.getEquations().forEach(eq -> writeSlvRateRule(eq));
 
         //Zapisanie gatunków do modelu SBML.
         Compartment compartment = docModel.createCompartment();
         compartment.setId(modelSlv.getName() + "Comp");
-        modelSlv.getParameters().forEach(param -> writeSlvSpeciesWithCompartment(modelSlv.getName() + "Comp", param));
+        species.forEach(param -> writeSlvSpeciesWithCompartment(modelSlv.getName() + "Comp", param));
 
         //Walidacja dokumentu SBML
         boolean isValidated = validator.validateExampleSBML(document);
@@ -187,6 +193,7 @@ public class SBMLCreator {
         Species species = docModel.createSpecies();
         species.setId(parameterSlv.getName());
         species.setCompartment(compartmentName);
+        species.setInitialAmount(parameterSlv.getValue());
     }
 
     /**
